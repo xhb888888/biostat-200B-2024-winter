@@ -4,19 +4,124 @@ format: pdf
 editor: visual
 ---
 
-## Running Code
+![](images/4401705701342_.pic.jpg){width="591"}
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+**Answer:**
 
-```{r}
-1 + 1
-```
+$S_x=\sqrt{\sum(x_i-\bar{x})^2}$
 
-You can add options to executable code like this
+$S_y=\sqrt{\sum(y_i-\bar{y})^2}$
 
-```{r}
-#| echo: false
-2 * 2
-```
+$r_{xy}\frac{S_y}{S_x}=\frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum(x_i-\bar{x})^2}\sqrt{\sum(y_i-\bar{y})^2}}*\frac{\sum(y_i-\bar{y})^2}{\sum(x_i-\bar{x})^2}$
 
-The `echo: false` option disables the printing of code (only output is displayed).
+$r_{xy}\frac{S_y}{S_x}=\frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum(x_i-\bar{x})^2}$
+
+$r_{xy}\frac{S_y}{S_x}=\hat{\beta_1}$
+
+![](images/4411705701344_.pic.jpg){width="534"}
+
+**(a) Answer:**
+
+$r_{xy}=\frac{\sum(x_i-\bar{x})(Y_i-\bar{Y})}{\sqrt{\sum(x_i-\bar{x})^2}\sqrt{\sum(Y_i-\bar{Y})^2}}$
+
+$r_{xy}=\frac{92.41}{\sqrt{2379.93}*\sqrt{49.905}}$
+
+$r_{xy}\approx 0.268$
+
+**(b) Answer:**
+
+$Q(\beta_0,\beta_1)=\sum(Y_i-\beta_0-\beta_1x_i)^2$
+
+$\frac{\partial Q}{\partial \beta_1}=-2\sum(Y_i-\beta_0-\beta_1x_i)x_i$
+
+$\frac{\partial Q}{\partial \beta_0}=-2\sum(Y_i-\beta_0-\beta_1x_i)$
+
+Let $\frac{\partial Q}{\partial \beta_1}=0$ and $\frac{\partial Q}{\partial \beta_0}=0$
+
+We derive:
+
+$\hat{\beta_1}=\frac{\sum(x_i-\bar{x})(Y_i-\bar{Y})}{\sum(x_i-\bar{x})^2}$
+
+$\hat{\beta_0}=\bar{Y}-\hat{\beta_1}\bar{x}$
+
+Hence:
+
+$\hat{\beta_1}=\frac{92.41}{2379.93}\approx 0.0388$
+
+$\hat{\beta_0}=3.07-0.0388*24.7\approx 2.11$
+
+**(c) Answer:**
+
+$\hat{\beta_1}:$ We would expect an increase of 0.0388 scores for satisfaction with healthcare provider for each additional year of age in patient. (Unit:Score/Year)
+
+$\hat{\beta_0}:$ We would expect a satisfaction with healthcare provider score of 2.11 for a 0 year of age in patient. (Unit:Score)
+
+**(d) Answer:**
+
+$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}x_i$
+
+$\hat{Y_i}=\hat{\beta_0}+\hat{\beta_1}(x_i+\bar{x}-\bar{x})$
+
+$\hat{Y_i}=(\hat{\beta_0}+\hat{\beta_1}\bar{x})+\hat{\beta_1}(x_i-\bar{x})$
+
+$\hat{Y_i}=\hat{\alpha_0}+\hat{\alpha_1}(x_i-\bar{x})$
+
+Then:
+
+$\hat{\alpha_1}=\hat{\beta_1}$
+
+$\hat{\alpha_0}=\hat{\beta_0}+\hat{\beta_1}\bar{x}$
+
+Hence:
+
+$\hat{\alpha_1}=0.0388$
+
+$\hat{\alpha_0}=2.11+0.0388*24.7\approx 3.07$
+
+**(e) Answer:**
+
+$\hat{\alpha_1}:$ We would expect an increase of 0.0388 scores for satisfaction with healthcare provider for each additional year of age in patient. (Unit: Score/Year)
+
+$\hat{\alpha_0}:$ We would expect a satisfaction with healthcare provider score of 3.07 for a 24.7 year of age in patient.(Unit: Score)
+
+![](images/4421705701346_.pic_hd.jpg)
+
+**Answer:**
+
+$Q(\beta_0)=\sum(Y_i-\beta_0)^2$
+
+$\frac{\partial Q}{\partial \beta_0}=-2\sum(Y_i-\beta_0)$
+
+Let $\frac{\partial Q}{\partial \beta_0}=0$
+
+We derive:
+
+$\hat{\beta_0}=\bar{Y}$
+
+Since Q is a convex function, $\hat{\beta_0}$ is the global minimum of Q.
+
+![](images/4431705701369_.pic.jpg)
+
+**(a) Answer:**
+
+$Y=3.724044+0.0025x$
+
+For every one number increase of average number of beds in hospital during study period, we expect 0.0025 increase of average estimated probability of acquiring infection in hospital.
+
+**(b) Answer:**
+
+$Y=2.78402+0.03640x$
+
+For every percent increase of available facilities and services of 35 potential facility and services, we expect 0.03640 increase of average estimated probability of acquiring infection in hospital.
+
+**(c) Answer:**
+
+$Y=311.06760-2.58905x$
+
+For every year increase of average age of patients, we expect 2.58905 number of decrease of average number of full-time equivalent nursses during stay period.
+
+**(d) Answer:**
+
+$Y=138.92708+228.13174x$
+
+On average, we expect 228.13174 more average number of full-time equivalent nurses during study period nurses in medical affiliation than in non-medical affiliation.
