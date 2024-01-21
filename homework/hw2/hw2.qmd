@@ -21,3 +21,15 @@ editor: visual
 # Problem 4
 
 ![](images/WeChatb2e8b640c9aea08a816ff2005aacd55c.png)
+
+**(a) Answer:**
+
+$\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_iY_i-X_i\bar{Y}-\bar{X}Y_i+\bar{X}\bar{Y})}{\sum(X_i-\bar{X})^2}$
+
+$\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_iY_i-X_i\bar{Y}-\bar{X}Y_i+n\frac{\sum{X_i}}{n}\frac{\sum{Y_i}}{n})}{\sum(X_i-\bar{X})^2}$
+
+$\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_iY_i-X_i\bar{Y}-\bar{X}Y_i+X_i\bar{Y}}{\sum(X_i-\bar{X})^2}$
+
+$\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_iY_i-\bar{X}Y_i)}{\sum(X_i-\bar{X})^2}$
+
+$\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})Y_i}{\sum(X_i-\bar{X})^2}$
