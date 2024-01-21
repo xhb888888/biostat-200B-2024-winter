@@ -1,0 +1,23 @@
+---
+title: "hw2"
+format: pdf
+editor: visual
+---
+
+# Problem 1
+
+![](images/WeChat065c203038c7e29ee155cea4a3a9dfe8.png)
+
+**Answer:**
+
+# Problem 2
+
+![](images/WeChatcbdaa452ae5d71d7c3dbd5b3de1dbe83.png)
+
+# Problem 3
+
+![](images/WeChat3952ce67e4ef94d72d2391a272c0f795.png)
+
+# Problem 4
+
+![](images/WeChatb2e8b640c9aea08a816ff2005aacd55c.png)
