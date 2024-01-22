@@ -109,3 +109,7 @@ $\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_iY_i-X_
 $\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_iY_i-\bar{X}Y_i)}{\sum(X_i-\bar{X})^2}$
 
 $\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})Y_i}{\sum(X_i-\bar{X})^2}$
+
+**(b) Answer:**
+
+$Cov(\bar{Y},\hat{\beta_1})=E[\bar{Y}\hat{\beta_1}]-E[\bar{Y}]E[\hat{\beta_1}]=\bar{Y}E[\hat{\beta_1}]-\bar{Y}E[\hat{\beta_1}]=0$
