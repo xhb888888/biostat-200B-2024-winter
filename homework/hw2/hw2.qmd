@@ -1,5 +1,6 @@
 ---
 title: "hw2"
+author: "Hanbei Xiong"
 format: pdf
 editor: visual
 ---
@@ -136,13 +137,43 @@ Here are histograms for each variable:
 
 By observing the summary statistics, the mean and median of each variable except "nurses" are close to each other, which indicates that the distribution of each variable is close to normal distribution. For variable "nurses", the mean is greater than the median which means there are right skewness in the distribution. By observing the histograms, the distribution of each variable except "nurses" is close to normal distribution. The distribution of "nurses" is right skewed. The histograms verify our interpretation of summary statistics.
 
-Here are scatter plots and fitted loess curve for each pair of variables:
+Here is scatter plot and fitted loess curve for a) between Risk and nurses:
 
 ![](images/WeChat62882ad9688733f5cd57f5bd5368edb9.png){width="271"}
 
+Here is the original residuals analysis to check the assumptions:
+
+![](images/WeChatdd94068e2a3eb5741699a0c376669d17.png){width="339"}
+
+We can see residuals are more scattered in right of predicted value and more narrow to the right. The constancy of error does not seem to meet. The linearity assumption is closely to meet. Residuals seem to distribute normally.
+
+Since the loess curve is relatively monotone and simple from fitted loess curve, we apply squared root transformation on x. Here is the updated residual analysis:
+
+![](images/WeChatc774a850fb00fbb1941d563708d61b9c.png){width="342"}
+
+The constancy of error seems to be verified after transformation. The linearity is a little off on both end side but show linearity in overall pattern. The distribution of residuals are a little right skewed but show normal distribution roughly.
+
+Here is scatter plot and fitted loess curve for b) between Risk and length:
+
 ![](images/WeChatefcd1b33ccdb3c312a31737c42e115f2.png){width="276"}
 
-![](images/WeChata913a4602c2d050ca512163ed0d43a1f.png){width="274"}
+Here is the original residuals analysis to check the assumptions:
+
+![](images/WeChat2053fc89b8a1e6d1195b87d4d779645e.png){width="286"}
+
+The constancy of error seems to meet as we ignore the outliar. The linearity assumption is closely to meet. Residuals seem to distribute normally. Therefore, we can apply linear regression model on this data.
+
+Here is scatter plot and fitted loess curve for c) between nurses and svcs: ![](images/WeChata913a4602c2d050ca512163ed0d43a1f.png){width="274"}
+
+Here is the original residuals analysis to check the assumptions:
+
+![](images/WeChat098aef49c4421e20448928be065a873b.png){width="298"}
+
+The assumption of constant error is obviously violated. The linearity assumption is closely to meet. Residuals show normal distribution. We apply log transformation on y. Here is the updated residual analysis:
+
+![](images/WeChatf026286a8104e363ccd30a4d567fefcf.png){width="283"}
+
+All assumptions seem to meet after this transformation.
 
 # Problem 4
 
