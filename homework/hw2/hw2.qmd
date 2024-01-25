@@ -118,6 +118,32 @@ Each quantities after fitting model with transformation matches with my mathemat
 
 ![](images/WeChat3952ce67e4ef94d72d2391a272c0f795.png)
 
+**Answer:**
+
+Here are summary statistics generated in SAS:
+
+![](images/WeChat8cc1a41f917226fdddeb69b1895ae3e2.png)
+
+Here are histograms for each variable:
+
+![](images/WeChata060745e77f93ba583534952e1ed98a0.png){width="255"}
+
+![](images/WeChat966fd712658a8b6af1b7e0539fcbba9b.png){width="254"}
+
+![](images/WeChata3a013e2681e45fa2a720717917489b7.png){width="256"}
+
+![](images/WeChatcb3bf0ca858e00d9ee1fba142b726e92.png){width="259"}
+
+By observing the summary statistics, the mean and median of each variable except "nurses" are close to each other, which indicates that the distribution of each variable is close to normal distribution. For variable "nurses", the mean is greater than the median which means there are right skewness in the distribution. By observing the histograms, the distribution of each variable except "nurses" is close to normal distribution. The distribution of "nurses" is right skewed. The histograms verify our interpretation of summary statistics.
+
+Here are scatter plots and fitted loess curve for each pair of variables:
+
+![](images/WeChat62882ad9688733f5cd57f5bd5368edb9.png){width="271"}
+
+![](images/WeChatefcd1b33ccdb3c312a31737c42e115f2.png){width="276"}
+
+![](images/WeChata913a4602c2d050ca512163ed0d43a1f.png){width="274"}
+
 # Problem 4
 
 ![](images/WeChatb2e8b640c9aea08a816ff2005aacd55c.png)
