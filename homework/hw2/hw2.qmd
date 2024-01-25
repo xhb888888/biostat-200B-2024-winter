@@ -32,63 +32,87 @@ $F=\frac{\hat{\beta_1^2}}{SE(\hat{\beta_1})^2}=(\frac{\hat{\beta_1}}{SE(\hat{\be
 
 Note:
 
-$\hat{\beta_1}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}$
-
 $\hat{\beta_0}=\bar{Y}-\hat{\beta_1}\bar{X}$
+
+$\hat{\beta_1}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}$
 
 $\hat{\sigma}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2$
 
 $R^2=\frac{SSR}{SSTO}=\frac{\sum(\hat{Y_i}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}$
 
+$t=\frac{\hat{\beta_1}}{SE(\hat{\beta_1})}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}$
+
 **(a) Answer:**
 
 Given $x_i$ is replaced be $cx_i$,
 
-$\hat{\beta_1^*}=\frac{\sum(cX_i-c\bar{X})(Y_i-\bar{Y})}{\sum(cX_i-c\bar{X})^2}=\frac{c\sum(X_i-\bar{X})(Y_i-\bar{Y})}{c^2\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{c\sum(X_i-\bar{X})^2}=\frac{1}{c}\hat{\beta_1}$
-
 $\hat{\beta_0^*}=\bar{Y}-\hat{\beta_1^*}(c\bar{X})=\hat{\beta_0}$
+
+$\hat{\beta_1^*}=\frac{\sum(cX_i-c\bar{X})(Y_i-\bar{Y})}{\sum(cX_i-c\bar{X})^2}=\frac{c\sum(X_i-\bar{X})(Y_i-\bar{Y})}{c^2\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{c\sum(X_i-\bar{X})^2}=\frac{1}{c}\hat{\beta_1}$
 
 $\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2$
 
-$R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}+\frac{1}{c}\hat{\beta_1}X_i-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}$
+$R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}cX_i-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}+\frac{1}{c}\hat{\beta_1}cX_i-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^{2}$
+
+$t^*=\frac{\hat{\beta_1^*}\sqrt{\sum(cX_i-c\bar{X})^2}}{\hat{\sigma^*}}=\frac{\frac{1}{c}\hat{\beta_1}\sqrt{c^2\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=t$
 
 **(b) Answer:**
 
 Given $x_i$ is replaced be $x_i+d$,
 
-$\hat{\beta_1^*}=\frac{\sum((X_i+d)-(\bar{X}+d))(Y_i-\bar{Y})}{\sum((X_i+d)-(\bar{X}+d))^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\hat{\beta_1}$
+$\hat{\beta_0^*}=\bar{Y}-\hat{\beta_1^*}(\bar{X}+d)=\bar{Y}-\hat{\beta_1}(\bar{X}+d)=\bar{Y}-\hat{\beta_1}\bar{X}-\hat{\beta_1}d=\hat{\beta_0}-\hat{\beta_1}d$
 
-$\hat{\beta_0^*}=\bar{Y}-\hat{\beta_1^*}(\bar{X}+d)=\bar{Y}-\hat{\beta_1}(\bar{X}+d)=\bar{Y}-\hat{\beta_1}\bar{X}-\hat{\beta_1}d$
+$\hat{\beta_1^*}=\frac{\sum((X_i+d)-(\bar{X}+d))(Y_i-\bar{Y})}{\sum((X_i+d)-(\bar{X}+d))^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\hat{\beta_1}$
 
 $\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2$
 
-$R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\bar{Y}-\hat{\beta_1}\bar{X}-\hat{\beta_1}d+\hat{\beta_1}(X_i+d)-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(-\hat{\beta_1}\bar{X}+\hat{\beta_1}X_i)^2}{\sum(Y_i-\bar{Y})^2}=\frac{\hat{\beta_1}^2\sum(X_i-\bar{X})^2}{\sum(Y_i-\bar{Y})^2}$
+$R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}(X_i+d)-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i+\hat{\beta_1^*}d-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}-\hat{\beta_1}d+\hat{\beta_1}X_i+\hat{\beta_1}d-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^{2}$
+
+$t^*=\frac{\hat{\beta_1^*}\sqrt{\sum((X_i+d)-(\bar{X}+d))^2}}{\hat{\sigma^*}}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=t$
 
 **(c) Answer:**
 
 Given $y_i$ is replaced be $ky_i$,
 
-$\hat{\beta_1^*}=\frac{\sum(X_i-\bar{X})(kY_i-k\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{k\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=k\hat{\beta_1}$
-
 $\hat{\beta_0^*}=k\bar{Y}-\hat{\beta_1^*}\bar{X}=k\bar{Y}-k\hat{\beta_1}\bar{X}=k(\bar{Y}-\hat{\beta_1}\bar{X})=k\hat{\beta_0}$
+
+$\hat{\beta_1^*}=\frac{\sum(X_i-\bar{X})(kY_i-k\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{k\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=k\hat{\beta_1}$
 
 $\hat{\sigma^*}^2=\frac{1}{n-2}\sum(kY_i-k\bar{Y_i})^2=\frac{k^2}{n-2}\sum(Y_i-\bar{Y_i})^2=k^2\hat{\sigma}^2$
 
 $R^{*2}=\frac{\sum(\hat{Y_i^*}-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{\sum(k\hat{\beta_0}+k\hat{\beta_1}X_i-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{k^2\sum(\hat{\beta_0}+\hat{\beta_1}X_i-\bar{Y})^2}{k^2\sum(Y_i-\bar{Y})^2}=R^2$
 
+$t^*=\frac{\hat{\beta_1^*}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma^*}}=\frac{k\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{k\hat{\sigma}}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=t$
+
 **(d) Answer:**
 
 Given $y_i$ is replaced be $y_i+d$,
 
-$\hat{\beta_1^*}=\frac{\sum(X_i-\bar{X})(Y_i+d-\bar{Y}-d)}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\hat{\beta_1}$
-
 $\hat{\beta_0^*}=\bar{Y}+d-\hat{\beta_1^*}\bar{X}=\bar{Y}+d-\hat{\beta_1}\bar{X}=\hat{\beta_0}+d$
+
+$\hat{\beta_1^*}=\frac{\sum(X_i-\bar{X})(Y_i+d-\bar{Y}-d)}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\hat{\beta_1}$
 
 $\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i+d-\bar{Y_i}-d)^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2$
 
 $R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y}-d)^2}{\sum(Y_i+d-\bar{Y_i}-d)^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i-\bar{Y}-d)^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}+d+\hat{\beta_1}X_i-\bar{Y}-d)^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{Y_i}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^2$
 
+$t^*=\frac{\hat{\beta_1^*}\sqrt{\sum(Y_i+d-\bar{Y_i}-d)^2}}{\hat{\sigma^*}}=\frac{\hat{\beta_1}\sqrt{\sum(Y_i-\bar{Y})^2}}{\hat{\sigma}}=t$
+
 **(e) Answer:**
+
+I will list the associated quantities below in order ($\hat{\beta_0},\hat{\beta_1},\hat{\sigma}^2,R^2,t$)
+
+Original scaling of variables: 75.92256, 0.53609, 19.372, 0.858, 20.42
+
+Convert age in month to age in year: 75.92256, 6.43307, 19.372, 0.858, 20.42
+
+Subtract mean age: 104.61972, 0.53609, 19.372, 0.858, 20.42
+
+Convert height in cm to height in inches: 29.89077, 0.21106, 3.0027, 0.858, 20.42
+
+Subtract mean height: -28.69716, 0.53609, 19.372, 0.858, 20.42
+
+Each quantities after fitting model with transformation matches with my mathematical derivation in part a), b), c), d).
 
 # Problem 3
 
