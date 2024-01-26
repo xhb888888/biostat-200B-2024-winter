@@ -139,7 +139,7 @@ By observing the summary statistics, the mean and median of each variable except
 
 Here is scatter plot and fitted loess curve for a) between Risk and nurses:
 
-![](images/WeChat62882ad9688733f5cd57f5bd5368edb9.png){width="271"}
+![](images/WeChat62882ad9688733f5cd57f5bd5368edb9.png){width="340"}
 
 Here is the original residuals analysis to check the assumptions:
 
@@ -155,23 +155,25 @@ The constancy of error seems to be verified after transformation. The linearity 
 
 Here is scatter plot and fitted loess curve for b) between Risk and length:
 
-![](images/WeChatefcd1b33ccdb3c312a31737c42e115f2.png){width="276"}
+![](images/WeChatefcd1b33ccdb3c312a31737c42e115f2.png){width="361"}
 
 Here is the original residuals analysis to check the assumptions:
 
-![](images/WeChat2053fc89b8a1e6d1195b87d4d779645e.png){width="286"}
+![](images/WeChat2053fc89b8a1e6d1195b87d4d779645e.png){width="368"}
 
 The constancy of error seems to meet as we ignore the outliar. The linearity assumption is closely to meet. Residuals seem to distribute normally. Therefore, we can apply linear regression model on this data.
 
-Here is scatter plot and fitted loess curve for c) between nurses and svcs: ![](images/WeChata913a4602c2d050ca512163ed0d43a1f.png){width="274"}
+Here is scatter plot and fitted loess curve for c) between nurses and svcs:
+
+![](images/WeChata913a4602c2d050ca512163ed0d43a1f.png){width="377"}
 
 Here is the original residuals analysis to check the assumptions:
 
-![](images/WeChat098aef49c4421e20448928be065a873b.png){width="298"}
+![](images/WeChat098aef49c4421e20448928be065a873b.png){width="374"}
 
 The assumption of constant error is obviously violated. The linearity assumption is closely to meet. Residuals show normal distribution. We apply log transformation on y. Here is the updated residual analysis:
 
-![](images/WeChatf026286a8104e363ccd30a4d567fefcf.png){width="283"}
+![](images/WeChatf026286a8104e363ccd30a4d567fefcf.png){width="379"}
 
 All assumptions seem to meet after this transformation.
 
@@ -193,4 +195,14 @@ $\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{
 
 **(b) Answer:**
 
-$Cov(\bar{Y},\hat{\beta_1})=E[\bar{Y}\hat{\beta_1}]-E[\bar{Y}]E[\hat{\beta_1}]=\bar{Y}E[\hat{\beta_1}]-\bar{Y}E[\hat{\beta_1}]=0$
+Let $c_i=\frac{X_i-\bar{X}}{\sum_{j=1}^{n}(X_j-\bar{X})^2}$
+
+$Cov(\bar{Y},\hat{\beta_1})=Cov(\frac{1}{n}\sum{Y_i},\sum{c_iY_i})=\frac{1}{n}Cov(\sum{Y_i},\sum{c_iY_i})=\frac{1}{n}Cov(Y_1+Y_2+\dots+Y_n,c_1Y_1+c_2Y_2+\dots+c_nY_n)$
+
+Since $Y_i$ are independent, $Cov(Y_i,Y_j)=0$ for $i\neq j$
+
+$Cov(\bar{Y},\hat{\beta_1})=\frac{1}{n}(Cov(Y_1,c_1Y_1)+Cov(Y_2,c_2Y_2)+\dots+Cov(Y_n,c_nY_n))=\frac{1}{n}(\sum{c_iVar(Y_i)})=\frac{\sigma^2}{n}\sum{c_i}$
+
+Since $\sum{c_i}=\frac{\sum(X_i-\bar{X})}{\sum_{j=1}^{n}(X_j-\bar{X})^2}=0$
+
+$Cov(\bar{Y},\hat{\beta_1})=0$
