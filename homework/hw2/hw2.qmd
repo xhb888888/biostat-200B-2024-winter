@@ -57,6 +57,8 @@ $R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{
 
 $t^*=\frac{\hat{\beta_1^*}\sqrt{\sum(cX_i-c\bar{X})^2}}{\hat{\sigma^*}}=\frac{\frac{1}{c}\hat{\beta_1}\sqrt{c^2\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=t$
 
+In this linear transformation, the $\hat{\beta_0}$, $\hat{\sigma}^2$, $t$-statistic and $R^2$ are invariant. The $\hat{\beta_1}$ is scaled by $\frac{1}{c}$.
+
 **(b) Answer:**
 
 Given $x_i$ is replaced be $x_i+d$,
@@ -70,6 +72,8 @@ $\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2$
 $R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}(X_i+d)-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i+\hat{\beta_1^*}d-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}-\hat{\beta_1}d+\hat{\beta_1}X_i+\hat{\beta_1}d-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^{2}$
 
 $t^*=\frac{\hat{\beta_1^*}\sqrt{\sum((X_i+d)-(\bar{X}+d))^2}}{\hat{\sigma^*}}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=t$
+
+In this linear transformation, the $\hat{\beta_1}$, $\hat{\sigma}^2$, $t$-statistic and $R^2$ are invariant. The $\hat{\beta_0}$ is shifted by $-\hat{\beta_1}d$.
 
 **(c) Answer:**
 
@@ -85,6 +89,8 @@ $R^{*2}=\frac{\sum(\hat{Y_i^*}-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{\sum(\h
 
 $t^*=\frac{\hat{\beta_1^*}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma^*}}=\frac{k\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{k\hat{\sigma}}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=t$
 
+In this linear transformation, $\hat{\beta_0}$ and $\hat{\beta_1}$ are both scaled by k, $\hat{\sigma}^2$ is scaled by $k^2$, $t$-statistic and $R^2$ are invariant.
+
 **(d) Answer:**
 
 Given $y_i$ is replaced be $y_i+d$,
@@ -99,19 +105,21 @@ $R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y}-d)^2}{\sum(Y_i+d-\bar{Y_i}-d)^2}=\frac{\s
 
 $t^*=\frac{\hat{\beta_1^*}\sqrt{\sum(Y_i+d-\bar{Y_i}-d)^2}}{\hat{\sigma^*}}=\frac{\hat{\beta_1}\sqrt{\sum(Y_i-\bar{Y})^2}}{\hat{\sigma}}=t$
 
+In this linear transformation, $\hat{\beta_0}$ is shifted by $d$, $\hat{\beta_1}$, $\hat{\sigma}^2$, $t$-statistic and $R^2$ are invariant.
+
 **(e) Answer:**
 
 I will list the associated quantities below in order ($\hat{\beta_0},\hat{\beta_1},\hat{\sigma}^2,R^2,t$)
 
 Original scaling of variables: 75.92256, 0.53609, 19.372, 0.858, 20.42
 
-Convert age in month to age in year: 75.92256, 6.43307, 19.372, 0.858, 20.42
+a\) Convert age in month to age in year: 75.92256, 6.43307, 19.372, 0.858, 20.42
 
-Subtract mean age: 104.61972, 0.53609, 19.372, 0.858, 20.42
+b\) Subtract mean age: 104.61972, 0.53609, 19.372, 0.858, 20.42
 
-Convert height in cm to height in inches: 29.89077, 0.21106, 3.0027, 0.858, 20.42
+c\) Convert height in cm to height in inches: 29.89077, 0.21106, 3.0027, 0.858, 20.42
 
-Subtract mean height: -28.69716, 0.53609, 19.372, 0.858, 20.42
+d\) Subtract mean height: -28.69716, 0.53609, 19.372, 0.858, 20.42
 
 Each quantities after fitting model with transformation matches with my mathematical derivation in part a), b), c), d).
 
@@ -137,7 +145,11 @@ Here are histograms for each variable:
 
 By observing the summary statistics, the mean and median of each variable except "nurses" are close to each other, which indicates that the distribution of each variable is close to normal distribution. For variable "nurses", the mean is greater than the median which means there are right skewness in the distribution. By observing the histograms, the distribution of each variable except "nurses" is close to normal distribution. The distribution of "nurses" is right skewed. The histograms verify our interpretation of summary statistics.
 
-Here is scatter plot and fitted loess curve for a) between Risk and nurses:
+## Here is scatter plot and fitted loess curves with different parameters for a) between Risk and nurses:
+
+![](images/WeChatfe26f1121138843e86f434356706617e.png){width="538"}
+
+We set parameter to be 0.6 and here is the plot we used to examine residuals:
 
 ![](images/WeChat62882ad9688733f5cd57f5bd5368edb9.png){width="340"}
 
@@ -145,15 +157,21 @@ Here is the original residuals analysis to check the assumptions:
 
 ![](images/WeChatdd94068e2a3eb5741699a0c376669d17.png){width="339"}
 
-We can see residuals are more scattered in right of predicted value and more narrow to the right. The constancy of error does not seem to meet. The linearity assumption is closely to meet. Residuals seem to distribute normally.
+We can see residuals are more spread on left and more narrow to the right. Therefore, the constancy of error does not seem to meet. The linearity assumption is closely to meet. Residuals seem to distribute normally.
 
-Since the loess curve is relatively monotone and simple from fitted loess curve, we apply squared root transformation on x. Here is the updated residual analysis:
+Since the loess curve is not showing a linear relationship between variables, we apply squared root transformation on x. Here is the updated scatter plot with fitted loess curve and residual analysis:
+
+![](images/WeChat1f9b045994d50ef60cc89e5a96dfe9c7.png){width="354"}
 
 ![](images/WeChatc774a850fb00fbb1941d563708d61b9c.png){width="342"}
 
-The constancy of error seems to be verified after transformation. The linearity is a little off on both end side but show linearity in overall pattern. The distribution of residuals are a little right skewed but show normal distribution roughly.
+The plot after transformation still shows a non-linear relationship. Since we observe there is decreasing pattern at the end of original plot (before transformation), linear transformation might not be appropriate since data is not following a monotone pattern. However, it could also due to the fact that there are not enough data being collected on the right. Regarding the assumptions, the constancy of error seems to be verified after transformation. The linearity exist in the overall pattern. The distribution of residuals show normal pattern roughly.
 
-Here is scatter plot and fitted loess curve for b) between Risk and length:
+## Here is scatter plot and fitted loess curves with different parameters for b) between Risk and length:
+
+![](images/WeChat8eb6530ecc52d45c6025c9738b28e347.png){width="527"}
+
+We set parameter to be 0.6 and here is the plot we used to examine residuals:
 
 ![](images/WeChatefcd1b33ccdb3c312a31737c42e115f2.png){width="361"}
 
@@ -161,9 +179,13 @@ Here is the original residuals analysis to check the assumptions:
 
 ![](images/WeChat2053fc89b8a1e6d1195b87d4d779645e.png){width="368"}
 
-The constancy of error seems to meet as we ignore the outliar. The linearity assumption is closely to meet. Residuals seem to distribute normally. Therefore, we can apply linear regression model on this data.
+The constancy of error seems to meet as we ignore the outlier. The linearity assumption is closely to meet. Residuals seem to distribute normally. If we remove the outliers as we observe in the scatter plot, it should show a linear regression relationship. Therefore, we do not need to transform variables.
 
-Here is scatter plot and fitted loess curve for c) between nurses and svcs:
+## Here is scatter plot and fitted loess curves with different parameters for c) between nurses and svcs:
+
+![](images/WeChat5b8ca94d16adfa15b23155e7fa283104.png){width="531"}
+
+We set parameter to be 0.6 and here is the plot we used to examine residuals:
 
 ![](images/WeChata913a4602c2d050ca512163ed0d43a1f.png){width="377"}
 
@@ -171,11 +193,13 @@ Here is the original residuals analysis to check the assumptions:
 
 ![](images/WeChat098aef49c4421e20448928be065a873b.png){width="374"}
 
-The assumption of constant error is obviously violated. The linearity assumption is closely to meet. Residuals show normal distribution. We apply log transformation on y. Here is the updated residual analysis:
+The assumption of constant error is obviously violated. The linearity assumption is closely to meet. Residuals show normal distribution. Since the fitted loess curve is not showing an obvious linear relationship between variables. We apply log transformation on y. Here is the updated scatter plot with fitted loess curve and residual analysis:
+
+![](images/WeChat12635750ae50342719996ee64b11229b.png){width="401"}
 
 ![](images/WeChatf026286a8104e363ccd30a4d567fefcf.png){width="379"}
 
-All assumptions seem to meet after this transformation.
+Variables show a linear relationship after log transformation on nurses. Regarding assumptions, all assumptions seem to meet after this transformation.
 
 # Problem 4
 
