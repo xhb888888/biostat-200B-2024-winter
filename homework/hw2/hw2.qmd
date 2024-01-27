@@ -1,7 +1,7 @@
 ---
 title: "hw2"
 author: "Hanbei Xiong"
-format: pdf
+format: html
 editor: visual
 ---
 
@@ -147,7 +147,7 @@ By observing the summary statistics, the mean and median of each variable except
 
 ## Here is scatter plot and fitted loess curves with different parameters for a) between Risk and nurses:
 
-![](images/WeChatfe26f1121138843e86f434356706617e.png){width="538"}
+![](images/WeChatfe26f1121138843e86f434356706617e.png){width="378"}
 
 We set parameter to be 0.6 and here is the plot we used to examine residuals:
 
@@ -161,7 +161,7 @@ We can see residuals are more spread on left and more narrow to the right. There
 
 Since the loess curve is not showing a linear relationship between variables, we apply squared root transformation on x. Here is the updated scatter plot with fitted loess curve and residual analysis:
 
-![](images/WeChat1f9b045994d50ef60cc89e5a96dfe9c7.png){width="354"}
+![](images/WeChat1f9b045994d50ef60cc89e5a96dfe9c7.png){width="347"}
 
 ![](images/WeChatc774a850fb00fbb1941d563708d61b9c.png){width="342"}
 
@@ -169,7 +169,7 @@ The plot after transformation still shows a non-linear relationship. Since we ob
 
 ## Here is scatter plot and fitted loess curves with different parameters for b) between Risk and length:
 
-![](images/WeChat8eb6530ecc52d45c6025c9738b28e347.png){width="527"}
+![](images/WeChat8eb6530ecc52d45c6025c9738b28e347.png){width="425"}
 
 We set parameter to be 0.6 and here is the plot we used to examine residuals:
 
@@ -183,7 +183,7 @@ The constancy of error seems to meet as we ignore the outlier. The linearity ass
 
 ## Here is scatter plot and fitted loess curves with different parameters for c) between nurses and svcs:
 
-![](images/WeChat5b8ca94d16adfa15b23155e7fa283104.png){width="531"}
+![](images/WeChat5b8ca94d16adfa15b23155e7fa283104.png){width="384"}
 
 We set parameter to be 0.6 and here is the plot we used to examine residuals:
 
@@ -195,7 +195,7 @@ Here is the original residuals analysis to check the assumptions:
 
 The assumption of constant error is obviously violated. The linearity assumption is closely to meet. Residuals show normal distribution. Since the fitted loess curve is not showing an obvious linear relationship between variables. We apply log transformation on y. Here is the updated scatter plot with fitted loess curve and residual analysis:
 
-![](images/WeChat12635750ae50342719996ee64b11229b.png){width="401"}
+![](images/WeChat12635750ae50342719996ee64b11229b.png){width="385"}
 
 ![](images/WeChatf026286a8104e363ccd30a4d567fefcf.png){width="379"}
 
