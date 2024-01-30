@@ -1,0 +1,94 @@
+---
+title: "hw3"
+author: "Hanbei Xiong"
+format: html
+editor: visual
+---
+
+# Question 1 (From Lab 3)
+
+## 1.1 The intercept from such a regression of residuals on residuals will always be zero (disregarding rounding error). Why? (Hint: what is the sample mean of the residuals from a linear regression model? And what is the formula for the intercept in a simple linear regression model?
+
+**Answer:**
+
+Since the formula for the intercept in a simple linear regression model is $\hat{\beta_0} = \bar{Y} - \hat{\beta_1}\bar{X}$, and the sample mean of the residuals from a linear regression model is $\bar{e} = 0$, so $\bar{Y}=\bar{X}=0$ in regression of residuals on residuals. Hence, the intercept will always be zero.
+
+## 1.2 How do we interpret the parameter estimates for the coefficients for regnc, regs, regw? How do we interpret the intercept in this model?
+
+**Answer:**
+
+Here are interpretation for each coefficient:
+
+regnc: The expected risk is 0.46696 lower for hospital in north central region than expected risk for hospital in north east region.
+
+regs: The expected risk is 0.93369 lower for hospital in south region than expected risk for hospital in north east region.
+
+regw: The expected risk is 0.47946 lower for hospital in west region than expected risk for hospital in north east region.
+
+The intercept is the expected risk for hospital in north east region.
+
+## 1.3 What region did we make the reference region by using the above code? Write code to fit a model using a different region as the reference group and run a regression model. Compare the output, especially the parameter estimates. Did R\^2 change? Did the ANOVA table change?
+
+**Answer:** We used north east region as the reference region in above code. I fit the model using north central region as the reference region. The R\^2 and ANOVA table did not change.
+
+## 1.4 How do we interpret the p-values in the Parameter Estimates table, in terms of testing for differences in means by region? What means are being compared?
+
+**Answer:** Each of these p-values tells whether the mean of the expected risk for hospital in that specific region is significantly different from the mean of the expected risk for hospital in reference region The means being compared are the mean of the expected risk for hospital in the reference region and the mean of the expected risk for hospital in the region of interest.
+
+## 1.5 Write out the null and alternative hypotheses for the test conducted by "test_region". Give the distribution of the test statistic under the null, the value of the test statistic and the p-value. What do you conclude?
+
+**Answer:**
+
+$H_0: \beta_{regnc} = \beta_{regs} = \beta_{regw}=0$
+
+$H_A: \beta_{regnc} , \beta_{regs} , \beta_{regw}$ are not all equal to zero
+
+$F^*\sim F_{3,107}$
+
+$F^*=2.50$
+
+$p = 0.0636$
+
+Conclusion: Since p-value is greater than 0.05, we fail to reject the null hypothesis. There is no evidence that the expected risk for hospital is associated with region, after controlling for length and census.
+
+## 1.6 Conduct the overall (omnibus) F test for the model risk = length census regnc regs regw. Write out the null and alternative hypotheses. Give the distribution of the test statistic under the null, the value of the test statistic and the p-value. What do you conclude?
+
+**Answer:**
+
+$H_0: \beta_{length}=\beta_{census}=\beta_{regnc} = \beta_{regs} = \beta_{regw}=0$
+
+$H_A: \beta_{length},\beta_{census}, \beta_{regnc} , \beta_{regs} , \beta_{regw}$ are not all equal to zero
+
+$F^*\sim F_{5,107}$
+
+$F=11.59$
+
+$p < 0.0001$
+
+Conclusion: Since p-value is less than 0.05, we reject the null hypothesis. There is evidence that at least one of the variable is significant in associating with the expected risk for hospital.
+
+## 1.7 A regression of risk on xray shows a highly significant relationship. Fit the model and conduct model diagnostics (residuals analysis). Report this relationship. Provide an interpretation of the regression coefficients, using appropriate units. Investigators hypothesize that xray will be significantly related to risk after controlling for beds, nurses and svcs. What model should you fit to test this hypothesis? Fit the model and report the results. Do the results support the hypothesis or not? Provide an interpretation of each of the regression coefficients, using appropriate units. Also report the partial correlation of each predictor with risk. Conduct a joint test of whether beds and nurses contribute to explaining variation in risk after controlling for svcs and xray.
+
+**Answer:**
+
+Simple Linear Regression Model:
+
+$\hat{Y_i}=1.79202+0.03140x_i$
+
+Here is model diagostics:
+
+![](images/WeChat89545b06ea8672c185426980e261f6ba.png){width="300"}
+
+Thee assumptions of residuals are met after examining the residual plots. It shows a linear regression. For the coefficient, the intercept is 1.79202 which means the expected risk is 179.202 percent when xray is 0, which does not make sense since risk as a probability measure should never exceed 100. It means this intercept has no real meaning. The slope is 0.03140 which means the expected risk increases 3.140 percent when xray increases 100 percent.
+
+Given the new assumption, I should fit a multiple linear regression with risk regressed on variables beds, nurses, svcs and dxay. The result is here:
+
+![](images/WeChat9262a0ff87d6b587bc4a9bd2e2d11ff3.png){width="295"}
+
+The result supports the hypothesis since the p-value of partial F test for xray is less than 0.0001. Here are interpretations for each coefficient:
+
+beds:
+
+# Question 2
+
+![](images/4761706592844_.pic.jpg)
