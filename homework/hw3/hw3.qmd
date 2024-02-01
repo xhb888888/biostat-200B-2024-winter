@@ -67,7 +67,7 @@ $p < 0.0001$
 
 Conclusion: Since p-value is less than 0.05, we reject the null hypothesis. There is evidence that at least one of the variable is significant in associating with the expected risk for hospital.
 
-## 1.7 A regression of risk on xray shows a highly significant relationship. Fit the model and conduct model diagnostics (residuals analysis). Report this relationship. Provide an interpretation of the regression coefficients, using appropriate units. Investigators hypothesize that xray will be significantly related to risk after controlling for beds, nurses and svcs. What model should you fit to test this hypothesis? Fit the model and report the results. Do the results support the hypothesis or not? Provide an interpretation of each of the regression coefficients, using appropriate units. Also report the partial correlation of each predictor with risk. Conduct a joint test of whether beds and nurses contribute to explaining variation in risk after controlling for svcs and xray.
+## 1.7 A regression of risk on xray shows a highly significant relationship. Fit the model and conduct model diagnostics (residuals analysis). Report this relationship. Provide an interpretation of the regression coefficients, using appropriate units.
 
 **Answer:**
 
@@ -79,16 +79,56 @@ Here is model diagostics:
 
 ![](images/WeChat89545b06ea8672c185426980e261f6ba.png){width="300"}
 
-Thee assumptions of residuals are met after examining the residual plots. It shows a linear regression. For the coefficient, the intercept is 1.79202 which means the expected risk is 179.202 percent when xray is 0, which does not make sense since risk as a probability measure should never exceed 100. It means this intercept has no real meaning. The slope is 0.03140 which means the expected risk increases 3.140 percent when xray increases 100 percent.
+Thee assumptions of residuals are met after examining the residual plots. It shows a linear regression. For the coefficient, the intercept is 1.79202 which means the expected risk is 1.79202 percent when xray is 0. The slope is 0.03140 which means the expected risk increases 0.03140 percent when xray increases 1 percent.
 
-Given the new assumption, I should fit a multiple linear regression with risk regressed on variables beds, nurses, svcs and dxay. The result is here:
+## Investigators hypothesize that xray will be significantly related to risk after controlling for beds, nurses and svcs. What model should you fit to test this hypothesis? Fit the model and report the results. Do the results support the hypothesis or not? Provide an interpretation of each of the regression coefficients, using appropriate units. Also report the partial correlation of each predictor with risk. Conduct a joint test of whether beds and nurses contribute to explaining variation in risk after controlling for svcs and xray.
+
+Given the new assumption, I should fit a multiple linear regression with risk regressed on variables beds, nurses, svcs and xray. The result is here:
 
 ![](images/WeChat9262a0ff87d6b587bc4a9bd2e2d11ff3.png){width="295"}
 
-The result supports the hypothesis since the p-value of partial F test for xray is less than 0.0001. Here are interpretations for each coefficient:
+The result supports the hypothesis that xray is significantly related to risk since the p-value in partial F test for xray is less than 0.0001. Here are interpretations for each regression coefficient:
 
-beds:
+Intercept: The expected risk is 0.86917 percent when xray, beds, nurses, and svcs are 0.
+
+xray: The expected risk increases 0.02858 percent for one ratio increase in the ratio of number of x-ray performed to number of patients without signs or symptoms of pneumonia, when holding other variables constant.
+
+beds: The expected risk decreases 0.0003393 percent for one number increase in average number of beds in hospital during study period, when holding other variables constant.
+
+nurses: The expected risk increases 0.00223 percent for one unit number in average number of full-time equivalent nurses during study period, when holding other variables constant.
+
+svcs: The expected risk increases 0.01976 percent for one percent increase in percent of 35 potential facilities and services that are provided by the hospital, when holding other variables constant.
+
+The partial correlation of each predictor with risk is:
+
+xray: 0.45260
+
+beds: -0.02311
+
+nurses: 0.11162
+
+svcs: 0.16153
+
+The joint test of whether beds and nurses contribute to explaining variation in risk after controlling for svcs and xray is:
+
+$H_0: \beta_{beds}=\beta_{nurses}=0$
+
+$H_A: \beta_{beds},\beta_{nurses}$ are not all equal to zero
+
+![](images/WeChateed13dc2229fe97b1ab62029a11988f4.png){width="371"}
+
+Conclusion: Since the pvalue is smaller than 0.05, we reject the null hypothesis. There is evidence that at least one of the variable is significant in associating with the expected risk for hospital, after controlling for svcs and xray.
 
 # Question 2
 
 ![](images/4761706592844_.pic.jpg)
+
+**(a) Answer:**
+
+The fitted model is $\hat{Y}=-0.21321+0.01051\hat{\beta}_{AGE}+0.02674\hat{\beta}_{WEIGHT}$
+
+We obain $R^2=0.8066$.
+
+**(b) Answer:**
+
+The Pearson correlation is 0.89811. The square of pearson correlation is 0.8066 which equals to $R^2$ we derived in part a).
