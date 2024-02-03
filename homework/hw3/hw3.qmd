@@ -11,7 +11,7 @@ editor: visual
 
 **Answer:**
 
-Since the formula for the intercept in a simple linear regression model is $\hat{\beta_0} = \bar{Y} - \hat{\beta_1}\bar{X}$, and the sample mean of the residuals from a linear regression model is $\bar{e} = 0$, so $\bar{Y}=\bar{X}=0$ in regression of residuals on residuals. Hence, the intercept will always be zero.
+Since the formula for the intercept in a simple linear regression model is $\hat{\beta_0} = \bar{Y} - \hat{\beta_1}\bar{X}$, and the sample mean of the residuals from a linear regression model is $\bar{e} = 0$ given by the property of residuals, so $\bar{Y}=\bar{X}=0$ in regression of residuals on residuals. The previous statemepwdnt is due to the fact that both $Y$ and $X$ are residuals derived from previous regressions. Their sample mean will follow the property of residual. Hence, the intercept will always be zero.
 
 ## 1.2 How do we interpret the parameter estimates for the coefficients for regnc, regs, regw? How do we interpret the intercept in this model?
 
@@ -27,9 +27,19 @@ regw: The expected risk is 0.47946 lower for hospital in west region than expect
 
 The intercept is the expected risk for hospital in north east region.
 
+![](images/WeChat876ea046ecb95db50c82defefdb54533.png){width="444"}
+
 ## 1.3 What region did we make the reference region by using the above code? Write code to fit a model using a different region as the reference group and run a regression model. Compare the output, especially the parameter estimates. Did R\^2 change? Did the ANOVA table change?
 
-**Answer:** We used north east region as the reference region in above code. I fit the model using north central region as the reference region. The R\^2 and ANOVA table did not change.
+**Answer:** We used north east region as the reference region in above code. I fit the model using north central region as the reference region. The parameter for the two unchanged variables changed and the p value is different as well. The intercept did not change much. The R\^2 and ANOVA table did not change.
+
+Here is the anova table and parameters estimates using central region as a reference region.
+
+![](images/WeChate2a27771d201ee2a44e7b43394835f9c.png){width="397"}
+
+Here is the original model with north east as the reference region.
+
+![](images/WeChat37252cb395c8fb34b46226f29d0ff18c.png){width="385"}
 
 ## 1.4 How do we interpret the p-values in the Parameter Estimates table, in terms of testing for differences in means by region? What means are being compared?
 
@@ -61,7 +71,7 @@ $H_A: \beta_{length},\beta_{census}, \beta_{regnc} , \beta_{regs} , \beta_{regw}
 
 $F^*\sim F_{5,107}$
 
-$F=11.59$
+$F^*=11.59$
 
 $p < 0.0001$
 
@@ -81,13 +91,19 @@ Here is model diagostics:
 
 Thee assumptions of residuals are met after examining the residual plots. It shows a linear regression. For the coefficient, the intercept is 1.79202 which means the expected risk is 1.79202 percent when xray is 0. The slope is 0.03140 which means the expected risk increases 0.03140 percent when xray increases 1 percent.
 
-## Investigators hypothesize that xray will be significantly related to risk after controlling for beds, nurses and svcs. What model should you fit to test this hypothesis? Fit the model and report the results. Do the results support the hypothesis or not? Provide an interpretation of each of the regression coefficients, using appropriate units. Also report the partial correlation of each predictor with risk. Conduct a joint test of whether beds and nurses contribute to explaining variation in risk after controlling for svcs and xray.
+## Investigators hypothesize that xray will be significantly related to risk after controlling for beds, nurses and svcs. What model should you fit to test this hypothesis? Fit the model and report the results.
 
 Given the new assumption, I should fit a multiple linear regression with risk regressed on variables beds, nurses, svcs and xray. The result is here:
 
 ![](images/WeChat9262a0ff87d6b587bc4a9bd2e2d11ff3.png){width="295"}
 
-The result supports the hypothesis that xray is significantly related to risk since the p-value in partial F test for xray is less than 0.0001. Here are interpretations for each regression coefficient:
+## Do the results support the hypothesis or not?
+
+The result supports the hypothesis that xray is significantly related to risk since the p-value in partial F test for xray is less than 0.0001.
+
+## Provide an interpretation of each of the regression coefficients, using appropriate units. Also report the partial correlation of each predictor with risk.
+
+## Here are interpretations for each regression coefficient:
 
 Intercept: The expected risk is 0.86917 percent when xray, beds, nurses, and svcs are 0.
 
@@ -109,15 +125,15 @@ nurses: 0.11162
 
 svcs: 0.16153
 
-The joint test of whether beds and nurses contribute to explaining variation in risk after controlling for svcs and xray is:
+## Conduct a joint test of whether beds and nurses contribute to explaining variation in risk after controlling for svcs and xray.
 
 $H_0: \beta_{beds}=\beta_{nurses}=0$
 
 $H_A: \beta_{beds},\beta_{nurses}$ are not all equal to zero
 
-![](images/WeChateed13dc2229fe97b1ab62029a11988f4.png){width="371"}
+![](images/22031706918102_.pic.jpg){width="389"}
 
-Conclusion: Since the pvalue is smaller than 0.05, we reject the null hypothesis. There is evidence that at least one of the variable is significant in associating with the expected risk for hospital, after controlling for svcs and xray.
+Conclusion: Since the pvalue is greater than 0.05, we fail to reject the null hypothesis. There is not enough evidence that beds and nurses contribute to explaining variation in risk after controlling for svcs and xray.
 
 # Question 2
 
@@ -127,8 +143,12 @@ Conclusion: Since the pvalue is smaller than 0.05, we reject the null hypothesis
 
 The fitted model is $\hat{Y}=-0.21321+0.01051\hat{\beta}_{AGE}+0.02674\hat{\beta}_{WEIGHT}$
 
-We obain $R^2=0.8066$.
+We obtain $R^2=0.8066$.
+
+![](images/WeChatea8f83b91e336e9e4cbaa864f87e3887.png){width="415"}
 
 **(b) Answer:**
 
 The Pearson correlation is 0.89811. The square of pearson correlation is 0.8066 which equals to $R^2$ we derived in part a).
+
+![](images/WeChat12838ee6bf5d07d65eda9c10f5842f16.png){width="423"}
