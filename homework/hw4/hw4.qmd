@@ -1,50 +1,299 @@
 ---
-title: "hw3"
+title: "hw4"
 author: "Hanbei Xiong"
 format: html
 editor: visual
 ---
 
-# Problem 1
+# Part A: Problems from Lab 4
 
-## 1.1 how do we interpret the coefs of the interaction terms? Compare these parameter estimates to those from the separate models.
+## A.1 how do we interpret the coefs of the interaction terms? Compare these parameter estimates to those from the separate models.
 
 **Answer:**
 
 ![](images/WeChatd95ca9ea0ae916d9652aa9c37473185f.png){width="307"}
 
-nclength: For hospital in north central region, change in expected mean risk associated with one additional length is 0.30337.
+Here are interpretation of interaction terms:
 
-slength: For hospital in south region, change in expected mean risk associated with one additional length is 0.43930.
+-   nclength: For hospital in north central region, change in expected mean risk associated with one additional length is 0.30337.
 
-wlength: For hospital in west region, change in expected mean risk associated with one additional length is -0.29237.
+-   slength: For hospital in south region, change in expected mean risk associated with one additional length is 0.43930.
 
-Here is the parameter estimates of seperate models:
+-   wlength: For hospital in west region, change in expected mean risk associated with one additional length is -0.29237.
 
-## 1.2 How would we test whether the slope coef for hospitals in the North Central region is equal to the slope coef for hospitals in the South region? Run this test.
+In separate models:
+
+We have one model for each of the region (1=North East, 2=North Central, 3=South, 4=West)
+
+Here are the parameter estimates:
+
+-   North East: 0.30556
+
+-   North Central: 0.60893
+
+-   South: 0.74486
+
+-   West: 0.01319
+
+The parameters estimate of north east (reference variable) in separate model matches with the parameter estimate of length. Other parameters between separate models and interaction model are not similar at all.
+
+## A.2 How would we test whether the slope coef for hospitals in the North Central region is equal to the slope coef for hospitals in the South region? Run this test.
 
 **Answer:**
+
+We can rewrite the model to check the slope coefs in either cases:
+
+The original interaction model is:
+
+Let $x_1$ be the length of stay, $x_2$ be the indicator for North Central region, $x_3$ be the indicator for South region, and $x_4$ be the indicator for West region.
+
+Then the model is: $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \beta_5x_1x_2 + \beta_6x_1x_3 + \beta_7x_1x_4$
+
+We let $x_2 = 1$, then $x_3 = 0$ and $x_4 = 0$.
+
+Then the model becomes:
+
+$y = \beta_0 + \beta_1x_1 + \beta_2 + \beta_5x_1$
+
+$y = (\beta_0 + \beta_2) + (\beta_1 + \beta_5)x_1$
+
+We let $x_3 = 1$, then $x_2 = 0$ and $x_4 = 0$.
+
+Then the model becomes:
+
+$y = \beta_0 + \beta_1x_1 + \beta_3 + \beta_6x_1$
+
+$y = (\beta_0 + \beta_3) + (\beta_1 + \beta_6)x_1$
+
+We can see that the slope coef for hospitals in the North Central region is $\beta_1 + \beta_5$ and the slope coef for hospitals in the South region is $\beta_1 + \beta_6$.
+
+Hence, it would be equivalent to test if $\beta_5 = \beta_6$.
 
 Here is the hypothesis:
 
-$H_-0: \beta_{nclength} = \beta_{slength}$
+$H_0: \beta_{5} = \beta_{6}$
 
-$H_A: \beta_{nclength} \neq \beta_{slength}$
+$H_A: \beta_{5} \neq \beta_{6}$
 
 Here is the result of partial F test:
 
-![](images/WeChat35ec16a397cdf5ad75b8b5b50303e4d0.png)
+![](images/WeChat35ec16a397cdf5ad75b8b5b50303e4d0.png){width="399"}
 
 Since the p value is greater than 0.05, we fail to reject the null hypothesis. There is no evidence that the slope coef for hospitals in the North Central region is different compared to the slope coef for hospitals in the South region.
 
-## 1.3 How would we test whether the slope coef for hospitals in the West region is equal to the slope coef for hospitals in the North East region? Run this test.
+## A.3 How would we test whether the slope coef for hospitals in the West region is equal to the slope coef for hospitals in the North East region? Run this test.
 
 **Answer:**
 
-Here is the hypotShesis:
+We can rewrite the model to check the slope coefs in either cases:
 
-$H_-0: \beta_{wlength} = \beta_{nelength}$
+The original interaction model is:
 
-## 1.4 How do these regression coefficients compare to the previous ones, with length not centered? Interpret each regression coef, including the intercept.
+Let $x_1$ be the length of stay, $x_2$ be the indicator for North Central region, $x_3$ be the indicator for South region, and $x_4$ be the indicator for West region.
 
-# Problem 2
+Then the model is: $y = \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \beta_5x_1x_2 + \beta_6x_1x_3 + \beta_7x_1x_4$
+
+We let $x_2 = 0$, then $x_3 = 0$ and $x_4 = 1$.
+
+Then the model becomes:
+
+$y = \beta_0 + \beta_1x_1 + \beta_4 + \beta_7x_1$
+
+$y = (\beta_0 + \beta_4) + (\beta_1 + \beta_7)x_1$
+
+Since north east region is the reference region, we let $x_2 = 0$, then $x_3 = 0$ and $x_4 = 0$.
+
+Then the model becomes:
+
+$y = \beta_0 + \beta_1x_1$
+
+We can see that the slope coef for hospitals in the West region is $\beta_1 + \beta_7$ and the slope coef for hospitals in the North East region is $\beta_1$.
+
+Hence, it would be equivalant to test if $\beta_7 = 0$.
+
+Here is the hypothesis:
+
+$H_0: \beta_{7} = 0$
+
+$H_A: \beta_{7} \neq 0$
+
+![](images/WeChat1f5408386b0d3249921f5d4008df8fd0.png){width="386"}
+
+Since the p value is greater than 0.05, we fail to reject the null hypothesis. There is no evidence that the slope coef for hospitals in the West region is different compared to the slope coef for hospitals in the North East region.
+
+## A.4 How do these regression coefficients compare to the previous ones, with length not centered? Interpret each regression coef, including the intercept.
+
+**Answer:**
+
+Here is the parameter estimates for the model with length centered:
+
+![](images/WeChateb4ee84a2fa1ed8a1593e0a2698d892f.png){width="447"}
+
+The parameters of length and the interaction terms are the same as the previous ones but the intercepts and parameters of the region are different.
+
+The model becomes:
+
+$y=\beta_0 + \beta_1(x_1-\bar{x}_1) + \beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \beta_5(x_1-\bar{x}_1)x_2 + \beta_6(x_1-\bar{x}_1)x_3 + \beta_7(x_1-\bar{x}_1)x_4$
+
+Here are interpretation:
+
+-   Intercept: The expected mean risk for hospital in North East region with length of stay 9.648 is 4.42042
+
+-   regnc: For hospital in North Central region with length of stay 9.648, the expected mean risk is 0.04825 lower than the expected mean risk for hospital in North East region with length of stay 9.648.
+
+-   regs: For hospital in South region with length of stay 9.648, the expected mean risk is 0.15325 lower than the expected mean risk for hospital in North East region with length of stay 9.648.
+
+-   regw: For hospital in West region with length of stay 9.648, the expected mean risk is 0.01893 higher than the expected mean risk for hospital in North East region with length of stay 9.648.
+
+-   length:
+
+    -   For hospital in North East region, for each additional day of length of stay, the expected mean risk is 0.30556 higher.
+    -   For hospital in North Central region, for each additional day of length of stay, the expected mean risk is 0.30556 + 0.300337 = 0.605897 higher than the expected mean risk for hospital in North East region.
+    -   For hospital in South region, for each additional day of length of stay, the expected mean risk is 0.30556 + 0.43930 = 0.74486 higher than the expected mean risk for hospital in North East region.
+    -   For hospital in West region, for each additional day of length of stay, the expected mean risk is 0.30556 - 0.29237 = 0.01319 higher than the expected mean risk for hospital in North East region.
+
+-   nclengthc:
+
+# Part B: Interactions and log-transformed variables with covid_immune data
+
+## B.1
+
+![](images/WeChat4bf7baa94cfdcbbf3e47b02d45b860a7.png){width="634"}
+
+**(a) Answer:**
+
+Here is the parameter estimates as regressing log10 Spike IgG on days PSO(X):
+
+![](images/WeChat1b6b58f494fdfba98fa34933f7ae05c0.png){width="508"}
+
+Since $log_{10}Y=\frac{log_aY}{log_a10}$, we can let a=e
+
+$log_{10}Y=\frac{log_eY}{log_e10}=\frac{ln(Y)}{ln(10)}$
+
+The original model is:
+
+$log_{10}Y = \beta_0 + \beta_1X$ $\Rightarrow$ $ln(Y) = \beta_0ln(10) + \beta_1Xln(10)$
+
+If we apply the exponential function to both sides, we get:
+
+$Y = e^{\beta_0ln(10)}e^{\beta_1Xln(10)}$ $\Rightarrow$ $Y = 10^{\beta_0+\beta_1X}$
+
+Hence, for unit increase on X, Y becomes:
+
+$Y^* = 10^{\beta_0+\beta_1(X+1)}=10^{\beta_0+\beta_1X}10^{\beta_1}=10^{\beta_1}Y$
+
+Since slope coef is -0.00192, which means the effect of a one-unit increase in days PSO would be to multiply the expected mean value of log10 Spike IgG by 10\^(-0.00192) = 0.99808.
+
+Residual Diagnostic:
+
+The model appears to be a good fit and seems to meet the assumptions of linear regression.
+
+**(b) Answer:**
+
+Here is the parameter estimates as regressing ln Spike IgG on days PSO(X):
+
+![](images/WeChat312cdc1935e8fe5b6e88ebf1347a8ba4.png){width="486"}
+
+The model is $ln(Y) = \beta_0 + \beta_1X$
+
+If we apply the exponential function to both sides, we get:
+
+$Y = e^{\beta_0+\beta_1X}$
+
+Hence, for unit increase on X, Y becomes:
+
+$Y^* = e^{\beta_0+\beta_1(X+1)}=e^{\beta_0+\beta_1X}e^{\beta_1}=e^{\beta_1}Y$
+
+Since slope coef is -0.00442, which means the effect of a one-unit increase in days PSO would be to multiply the expected mean value of ln Spike IgG by e\^(-0.00442) = 0.99808.
+
+Residual Diagnostic:
+
+The model appears to be a good fit and seems to meet the assumptions of linear regression.
+
+**(c) Answer:**
+
+Here is the parameter estimates as regressing days PSO(Y) on ln age(X):
+
+![](images/WeChate3625f5e51e8cd9064b85e57672ddd1e.png){width="503"}
+
+The model is $Y = \beta_0 + \beta_1 ln(X)$
+
+If we increment X by 1 percent
+
+$Y^* = \beta_0 + \beta_1 ln(1.01X) = \beta_0 + \beta_1 ln(X) + \beta_1 ln(1.01) \approx Y + 0.01\beta_1$
+
+Since slope coef is 16.13521, which means a one percent increase in age is associated with an increase in the mean of days PSO about 0.01\*16.13521 = 0.1613521.
+
+Residual Diagnostic:
+
+The model appears to be a good fit but the linearity assumption does not seem to meet.
+
+## B.2
+
+![](images/WeChatf5e42f025eff94d2b8576309d9423e9a.png){width="630"}
+
+**(a) Answer:**
+
+Here are distributions of SpikeIgG and SpikeIgA on original scale:
+
+![![](images/WeChat567091f8b15b171c908e8d16adb5e750.png){width="349"}](images/WeChat62b25c966f060d57f816ba6d4ffcc63a.png){width="343"}
+
+Here are distributions of SpikeIgG and SpikeIgA after log transformation:
+
+![](images/WeChat13bbac529f8225f0b44686ec8a9d6be5.png){width="357"}
+
+![](images/WeChat40f8971373e486d10e4f346d90a8dae2.png){width="357"}
+
+We can clearly see that since there are outlier in the raw data for both SpikeIgG and SpikeIgA, it is extremely hard for us to make any conclusion based on the distributions. The log transformation can help to make the data more normally distributed. That is why the distributions of log transformed data are more symmetric and bell-shaped.
+
+**(b) Answer:**
+
+Here is the scatter plot containing loess curve with parameter equals 0.3 and linear model fit:
+
+![](images/WeChatb8dc96faf84b9d38252eb4e6ed043670.png){width="392"}
+
+**(c) Answer:**
+
+Here are coefficients of the log-log model:
+
+![](images/WeChat72f55aae6f507e813eb83865d3b7367a.png){width="418"}
+
+Interpretation of parameter estimate of lnIgA:
+
+For one unit increase in lnIgA, the expected mean value of lnIgG increases by 0.47350.
+
+**(d) Answer:**
+
+By observing the residual plot, we can conclude that the log-log model is a reasonable fit to the data.
+
+## B.3
+
+![](images/WeChate8c1841a331acd349d246e9a0ccc5463.png){width="642"}
+
+**(a) Answer:**
+
+Here is the sample size in each category:
+
+![](images/WeChatdea00cb37b4e83e162ca3f2c79019c3e.png){width="408"}
+
+**(b) Answer:**
+
+Here is the model with interaction between daysPSO and peak disease severity:
+
+![](images/WeChat21b19eed7133e99b6d51c9034f8b0760.png){width="426"}
+
+**(c) Answer:**
+
+The original model can be written as:
+
+$ln(Y) = \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_3 + \beta_4X_1X_2 + \beta_5X_1X_3$
+
+$H_0: \beta_4 = \beta_5 = 0$
+
+$H_A: \beta_4 \neq 0$ or $\beta_5 \neq 0$
+
+![](images/WeChat9dceec49de5f810d87a4363b35bbd4d3.png){width="459"}
+
+Since the p value is greater than 0.05, we fail to reject the null hypothesis. There is no evidence to suggest that the interaction between daysPSO and peak disease severity is significant.
+
+**(d) Answer:**
