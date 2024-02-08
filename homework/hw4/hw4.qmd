@@ -13,13 +13,35 @@ editor: visual
 
 ![](images/WeChatd95ca9ea0ae916d9652aa9c37473185f.png){width="307"}
 
+The full model is:
+
+$y= \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \beta_5x_1x_2 + \beta_6x_1x_3 + \beta_7x_1x_4$
+
+Where $x_1$ is the length of stay, $x_2$ is the indicator for North Central region, $x_3$ is the indicator for South region, and $x_4$ is the indicator for West region.
+
+When $x_2=1$ and $x_3=0$ and $x_4=0$, the model becomes:
+
+$y= (\beta_0 + \beta_2) + (\beta_1 + \beta_5)x_1$
+
+When $x_3=1$ and $x_2=0$ and $x_4=0$, the model becomes:
+
+$y= (\beta_0 + \beta_3) + (\beta_1 + \beta_6)x_1$
+
+When $x_4=1$ and $x_2=0$ and $x_3=0$, the model becomes:
+
+$y= (\beta_0 + \beta_4) + (\beta_1 + \beta_7)x_1$
+
+When $x_2=0$ and $x_3=0$ and $x_4=0$, the model becomes:
+
+$y= \beta_0 + \beta_1x_1$
+
 Here are interpretation of interaction terms:
 
--   nclength: For hospital in north central region, change in expected mean risk associated with one additional length is 0.30337.
+-   nclength: The difference of change in expected mean risk for hospital in North Central region compared to hospital in North East region for each additional day of length of stay is 0.30337 percent.
 
--   slength: For hospital in south region, change in expected mean risk associated with one additional length is 0.43930.
+-   slength: The difference of change in expected mean risk for hospital in South region compared to hospital in North East region for each additional day of length of stay is 0.4393 percent.
 
--   wlength: For hospital in west region, change in expected mean risk associated with one additional length is -0.29237.
+-   wlength: The difference of change in expected mean risk for hospital in West region compared to hospital in North East region for each additional day of length of stay is -0.29237 percent.
 
 In separate models:
 
@@ -135,24 +157,47 @@ The model becomes:
 
 $y=\beta_0 + \beta_1(x_1-\bar{x}_1) + \beta_2x_2 + \beta_3x_3 + \beta_4x_4 + \beta_5(x_1-\bar{x}_1)x_2 + \beta_6(x_1-\bar{x}_1)x_3 + \beta_7(x_1-\bar{x}_1)x_4$
 
+When $x_2 = 1$, then $x_3 = 0$ and $x_4 = 0$.
+
+Then the model becomes:
+
+$y = \beta_0 + \beta_1(x_1-\bar{x}_1) + \beta_2 + \beta_5(x_1-\bar{x}_1) = (\beta_0+\beta_2)+(\beta_1+\beta_5)(x_1-\bar{x})$
+
+When $x_3 = 1$, then $x_2 = 0$ and $x_4 = 0$.
+
+Then the model becomes:
+
+$y = \beta_0 + \beta_1(x_1-\bar{x}_1) + \beta_3 + \beta_6(x_1-\bar{x}_1) = (\beta_0+\beta_3)+(\beta_1+\beta_6)(x_1-\bar{x})$
+
+When $x_4 = 1$, then $x_2 = 0$ and $x_3 = 0$.
+
+Then the model becomes:
+
+$y = \beta_0 + \beta_1(x_1-\bar{x}_1) + \beta_4 + \beta_7(x_1-\bar{x}_1) = (\beta_0+\beta_4)+(\beta_1+\beta_7)(x_1-\bar{x})$
+
+When $x_2 = 0$, then $x_3 = 0$ and $x_4 = 0$.
+
+Then the model becomes:
+
+$y = \beta_0 + \beta_1(x_1-\bar{x}_1)$
+
 Here are interpretation:
 
--   Intercept: The expected mean risk for hospital in North East region with length of stay 9.648 is 4.42042
+-   Intercept: The expected mean risk for hospital in North East region is 4.42042 percent with length of stay 9.648 days.
 
--   regnc: For hospital in North Central region with length of stay 9.648, the expected mean risk is 0.04825 lower than the expected mean risk for hospital in North East region with length of stay 9.648.
+-   regnc: For hospital in North Central region, the expected mean risk is 0.04825 percent lower than the expected mean risk for hospital in North East region when length of stay is 9.648 days.
 
--   regs: For hospital in South region with length of stay 9.648, the expected mean risk is 0.15325 lower than the expected mean risk for hospital in North East region with length of stay 9.648.
+-   regs: For hospital in South region, the expected mean risk is 0.15325 percent lower than the expected mean risk for hospital in North East region when length of stay 9.648.
 
--   regw: For hospital in West region with length of stay 9.648, the expected mean risk is 0.01893 higher than the expected mean risk for hospital in North East region with length of stay 9.648.
+-   regw: For hospital in West region, the expected mean risk is 0.01893 percent higher than the expected mean risk for hospital in North East region with length of stay 9.648.
 
--   length:
+-   length: For hospital in North East region, each additional day of length of stay increases the expected mean risk by 0.30556 percent
 
-    -   For hospital in North East region, for each additional day of length of stay, the expected mean risk is 0.30556 higher.
-    -   For hospital in North Central region, for each additional day of length of stay, the expected mean risk is 0.30556 + 0.300337 = 0.605897 higher than the expected mean risk for hospital in North East region.
-    -   For hospital in South region, for each additional day of length of stay, the expected mean risk is 0.30556 + 0.43930 = 0.74486 higher than the expected mean risk for hospital in North East region.
-    -   For hospital in West region, for each additional day of length of stay, the expected mean risk is 0.30556 - 0.29237 = 0.01319 higher than the expected mean risk for hospital in North East region.
+-   nclengthc: The difference of change in expected mean risk for hospital in North Central region compared to hospital in North East region for each additional day of length of stay is 0.30337 percent.
 
--   nclengthc:
+-   slengthc: The difference of change in expected mean risk for hospital in South region compared to hospital in North East region for each additional day of length of stay is 0.43930 percent.
+
+-   wlengthc: The difference of change in expected mean risk for hospital in West region compared to hospital in North East region for each additional day of length of stay is -0.29237 percent.
 
 # Part B: Interactions and log-transformed variables with covid_immune data
 
@@ -297,3 +342,33 @@ $H_A: \beta_4 \neq 0$ or $\beta_5 \neq 0$
 Since the p value is greater than 0.05, we fail to reject the null hypothesis. There is no evidence to suggest that the interaction between daysPSO and peak disease severity is significant.
 
 **(d) Answer:**
+
+The original model can be written as:
+
+$ln(Y) = \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_3 + \beta_4X_1X_2 + \beta_5X_1X_3$
+
+$X_1$ represents daysPSO, $X_2$ represents peak disease moderate, and $X_3$ represents peak disease severe
+
+When $X_2 = 0$ and $X_3 = 0$, the model becomes:
+
+When $X_2 = 0$ and $X_3 = 0$, the model becomes:
+
+$ln(Y) = \beta_0 + \beta_1X_1$
+
+When $X_2 = 1$ and $X_3 = 0$, the model becomes:
+
+$ln(Y) = \beta_0 + \beta_1X_1 + \beta_2 + \beta_4X_1 = (\beta_0 + \beta_2) + (\beta_1+\beta_4)X_1$
+
+When $X_2 = 0$ and $X_3 = 1$, the model becomes:
+
+$ln(Y) = \beta_0 + \beta_1X_1 + \beta_3 + \beta_5X_1 = (\beta_0 + \beta_3) + (\beta_1+\beta_5)X_1$
+
+Hence:
+
+The point estimates of the half lives of SpikeIgG for the three groups are:
+
+-   For the mild group: $\frac{-ln(2)}{\hat{\beta_1}}=\frac{-ln(2)}{-0.00488} = 142.62$
+
+-   For the moderate group: $\frac{-ln(2)}{(\hat{\beta_1} + \hat{\beta_4})}=\frac{-ln(2)}{-0.00488 + 0.00094844} = 146.63$
+
+-   For the severe group: $\frac{-ln(2)}{(\hat{\beta_1} + \hat{\beta_5})}= \frac{-ln(2)}{-0.00488 - 0.00735} = 94.89$
