@@ -1,0 +1,374 @@
+---
+title: "hw5"
+author: "Hanbei Xiong"
+format: pdf
+editor: visual
+---
+
+# Part A: Problems from Lab 5.
+
+## 1. For the regression of logdocper on logpopdens bedp1000 hsgrad poverty unemp pcinck, provide an interpretation of each of the regression coefficients.
+
+**Answer:**
+
+Here is the SAS output for the regression coefficients:
+
+![](images/WeChat38efdfd6175977a60768b8bccad939d8.png){width="494"}
+
+The formula with the regression coefficient is:
+
+$$\log(\text{docper}) = -1.57389 + 0.04309 \log(\text{popdens}) + 0.16328 \text{bedp1000} - 0.0004001 \text{hsgrad} + 0.27268 \text{bagrad} + 0.01841\text{poverty} - 0.00666 \text{unemp} + 0.03425 \text{pcinck}$$ We exponentiate both sides, we have:
+
+$$\text{docper} = e^{-1.57389} \times e^{0.04309 \log(\text{popdens})} \times e^{0.16328 \text{bedp1000}} \times e^{-0.0004001 \text{hsgrad}} \times e^{0.27268 \text{bagrad}} \times e^{0.01841\text{poverty}} \times e^{-0.00666 \text{unemp}} \times e^{0.03425 \text{pcinck}}$$ We simplify the formula to:
+
+$$\text{docper} = e^{-1.57389} \times \text{popdens}^{0.04309} \times e^{0.16328 \text{bedp1000}} \times e^{-0.0004001 \text{hsgrad}} \times e^{0.27268 \text{bagrad}} \times e^{0.01841\text{poverty}} \times e^{-0.00666 \text{unemp}} \times e^{0.03425 \text{pcinck}}$$ logpopdens: For a 1% increase in population density, the number of active physician per 1000 people is multiplied by 1.000339 while holding all other predictors constant.
+
+bedp1000: For a 1 unit increase in the number of hospital beds per 1000 people, the number of active physician per 1000 people is multiplied by 1.1774 while holding all other predictors constant.
+
+hsgrad: For a 1% increase in the percentage of high school graduates, the number of active physician per 1000 people is multiplied by 0.9996 while holding all other predictors constant.
+
+bagrad: For a 1% increase in the percentage of college graduates, the number of active physician per 1000 people is multiplied by 1.312 while holding all other predictors constant.
+
+poverty: For a 1% increase in the percentage of people living in poverty, the number of active physician per 1000 people is multiplied by 1.0186 while holding all other predictors constant.
+
+unemp: For a 1% increase in the percentage of unemployment, the number of active physician per 1000 people is multiplied by 0.9934 while holding all other predictors constant.
+
+pcinck: For a 1% increase in the per capita income, the number of active physician per 1000 people is multiplied by 1.0347 while holding all other predictors constant.
+
+## 2. For the predictor pcinck, verify that the SE of the regression coef is equal to the formula involving R\^2_j given in lecture, ie, find each of the quantities in the SE and calculate the SE, verifying it is equal to the SE given in the SAS output for the regression.
+
+**Answer:**
+
+## 3. 3. In general, would you expect VIFs to increase or decrease as more predictors are added to a model? Provide a justification for your answer. Illustrate by providing some example regressions using the CDI dataset.
+
+**Answer:**
+
+VIFs would increase as more predictors are added to a model. The VIF is calculated as:
+
+$$VIF_j = \frac{1}{1 - R^2_j}$$ where $R^2_j$ is the R-squared value of the regression of the $j$th predictor regresses on all the other predictors. As more predictors are added to the model, the $R^2_j$ value would increase, since more variability of $j$th predictor would be explained by the additional predictors (It will never decrease). Then, the denominator of the VIF would decrease, which would increase the VIFs for each predictor.
+
+Justification using CDI dataset:
+
+We will start with model which is regressing 'docper100' on 'bedp1000' and 'hsgrad'. Here is the SAS output including VIFs:
+
+![](images/WeChat45ddf96d1615930b95685c4a1db3ae0f.png){width="541"}
+
+We add an addition predictor called 'bagrad' into the model. Here is the SAS output including VIFs:
+
+![](images/WeChat0e5c4804a33de2ef47edbabc79630dc7.png){width="544"}
+
+We can see the VIF of variable 'bedp1000' increases from 1.04667 to 1.07098, and VIF of variable 'hsgrad' increases from 1.04667 to 2.14167.
+
+We add another predictor 'poverty' into the second model. Here is the SAS output including VIFs:
+
+![](images/WeChatf4e558f6ac38551ceabd7e5ec7649f14.png){width="548"}
+
+We can see the VIF of variable 'bedp1000' increases from 1.07098 to 1.17887, the VIF of variable 'hsgrad' increases from 2.14167 to 3.28575, and the VIF of variable 'bagrad' increases from 2.05041 to 2.07962.
+
+Hence, the result above validates my answer.
+
+# Part B: Least squares using matrix algebra
+
+1.  Show that that matrix **I-H** is symmetric and idempotent. **I** is the identity matrix and $H=X(X^TX)^{-1}X^T$
+
+**Answer:**
+
+Given $I-H=I-X(X^TX)^{-1}X^T$
+
+We can see that $(I-H)^T=I^T-(X(X^TX)^{-1}X^T)^T=I-X((X^TX)^T)^{-1}X^T=I-X(X^TX)^{-1}X^T=I-H$
+
+Hence, $I-H$ is symmetric.
+
+We can show $H$ is idempotent:
+
+$HH=(X(X^TX)^{-1}X^T)(X(X^TX)^{-1}X^T)=X(X^TX)^{-1}(X^TX)(X^TX)^{-1}X^T=X(X^TX)^{-1}X^T=H$
+
+Then, we can show $I-H$ is idempotent:
+
+$(I-H)(I-H)=I^2-IH-HI+H^2=I-H-H+HH=I-H-H+H=I-H$
+
+We finished the proof.
+
+2.  Show that the matrix $I-\frac{1}{n}J$ is symmetric and idempotent. **J=11'**, where **1** is a vector of 1's
+
+**Answer:**
+
+Given $I-\frac{1}{n}J=I-\frac{1}{n}11'$
+
+We can see that $(I-\frac{1}{n}J)^T=I^T-(\frac{1}{n}11')^T=I-\frac{1}{n}11'=I-\frac{1}{n}J$
+
+Hence, $I-\frac{1}{n}J$ is symmetric.
+
+$JJ=(11')(11')=1(1'1)'1=11'=n11'=nJ$ where n is number of element in vector **1**
+
+Then, we can show $I-\frac{1}{n}J$ is idempotent:
+
+$(I-\frac{1}{n}J)(I-\frac{1}{n}J)=I^2-I(\frac{1}{n}J)-(\frac{1}{n}J)I+(\frac{1}{n}J)^2=I-\frac{1}{n}J-\frac{1}{n}J+\frac{1}{n^2}JJ=I-\frac{1}{n}J-\frac{1}{n}J+\frac{1}{n^2}nJ=I-\frac{1}{n}J-\frac{1}{n}J+\frac{1}{n}J=I-\frac{1}{n}J$
+
+We finished the proof.
+
+3.  Consider the model $Y=X\beta+\epsilon$, $E(\epsilon)=0$, $Var(\epsilon)=\sigma^2I$, Show by using matrix operations:
+
+    a.  $E(Y)=X\beta$ and $Var(Y)=\sigma^2I$
+    b.  For $\hat{\beta}=(X'X)^{-1}X'Y$, $E(\hat{\beta})=\beta$ and $Var(\hat{\beta})=\sigma^2(X^TX)^{-1}$
+    c.  For $\hat{Y}=HY$ where $H=X(X'X)^{-1}X'$, $E(\hat{Y})=X\beta$ and $Var(\hat{Y})=\sigma^2H$
+
+**(a) Answer:**
+
+$E(Y)=E(X\beta+\epsilon)=X\beta+E(\epsilon)=X\beta$
+
+Since we have proved $Cov(X\beta,\epsilon)=0$ in HW2,
+
+$Var(Y)=Var(X\beta+\epsilon)=Var(X\beta)+Var(\epsilon)+2Cov(X\beta,\epsilon)=0+\sigma^2I+0=\sigma^2I$
+
+**(b) Answer:**
+
+$E(\hat{\beta})=E((X'X)^{-1}X'Y)=(X'X)^{-1}X'E(Y)=(X'X)^{-1}X'X\beta=(X'X)^{-1}(X'X)\beta=\beta$
+
+$Var(\hat{\beta})=Var((X'X)^{-1}X'Y)=(X'X)^{-1}X'Var(Y)X(X'X)^{-1}=\sigma^2(X'X)^{-1}X'X(X'X)^{-1}=\sigma^2(X'X)^{-1}$
+
+**(c) Answer:**
+
+$E(\hat{Y})=E(HY)=E(X(X'X)^{-1}X'Y)=X(X'X)^{-1}X'E(Y)=X(X'X)^{-1}X'X\beta=X\beta$
+
+In the following, we will use the property that H is symmetric and in idempotent.
+
+$Var(\hat{Y})=Var(HY)=HVar(Y)H^T=H\sigma^2IH^T=\sigma^2HH^T=\sigma^2H$
+
+4.  A data set contains observations on 2n patients, n females and n males. A dummy variable is created such that $x_i=0$ for females and $x_i=1$ for males. The outcome variables are $u_i$ for women and $v_i$ for men. Let $\bar{u}$ be the sample mean for females and $\bar{v}$ be the sample mean for males, and let $s_u^2$ and $s_v^2$ be the sample variances for each group. Consider the model $y_i=\beta_0+\beta_1x_i+\epsilon$, where $y_i$ equals $u_i$ for women and $v_i$ for men. The data set is sorted such that females are in the first n rows and males are in the next n rows
+
+    a.  Write the design matrix X (Show the element of the matrix)
+    b.  Obtain the $X'X$ matrix, its inverse $(X'X)^{-1}$, and $X'Y$ matrix
+    c.  By computing $\hat{\beta}=(X'X)^{-1}X'Y$, show that $\begin{bmatrix} \bar{u} \\ \bar{v}-\bar{u} \end{bmatrix}$. How do you interpret $\hat{\beta}_0$ and $\hat{\beta}_1$?
+    d.  Obtain the hat matrix $H=X(X'X)^{-1}X'$. Express the elements of $H$ using n.
+    e.  Obtain the vector of fitted values $\hat{Y}$ by computing $\hat{Y}=HY$.
+    f.  Obtain the SSE by computing $(Y-\hat{Y})'(Y-\hat{Y})$ and the MSE. Express the MSE in terms of n, $s_u^2$, and $s_v^2$.
+    g.  Suppose that you are conducting a two-sample t test to test $H_0:\mu_{female}=\mu_{male}$, assuming the two groups have equal variance. Obtain an expression for the estimated common variance $\sigma^2$ for this t test, expressing it in terms of n, $s_u^2$, and $s_v^2$.
+    h.  How do your estimates in (f) and (g) compare?
+
+**(a) Answer:**
+
+$X\in \mathbb{R}^{2n\times2}$
+
+Starting at the nth row, each row changes from (1,0) to (1,1)
+
+$$
+\begin{bmatrix}
+  1 & 0 \\
+  1 & 0 \\
+  \vdots & \vdots \\
+  1 & 0 \\
+  1 & 1 \\
+  1 & 1 \\
+  \vdots & \vdots \\
+  1 & 1 \\
+\end{bmatrix}
+$$
+
+**(b) Answer:**
+
+$$
+X'X=\begin{bmatrix}
+  1 & 1 & \cdots & 1 & 1 & 1 \cdots & 1 \\
+  0 & 0 & \cdots & 0 & 1 & 1 \cdots & 1 \\
+\end{bmatrix}\begin{bmatrix}
+  1 & 0 \\
+  1 & 0 \\
+  \vdots & \vdots \\
+  1 & 0 \\
+  1 & 1 \\
+  1 & 1 \\
+  \vdots & \vdots \\
+  1 & 1 \\
+\end{bmatrix}=\begin{bmatrix}
+  2n & n \\
+  n & n \\
+\end{bmatrix}
+$$
+
+$$
+(X'X)^{-1}=\frac{1}{2n^2-n^2}\begin{bmatrix}
+  n & -n \\
+  -n & 2n \\
+\end{bmatrix}=\frac{1}{n^2}\begin{bmatrix}
+  n & -n \\
+  -n & 2n \\
+\end{bmatrix}=\begin{bmatrix}
+  \frac{1}{n} & -\frac{1}{n} \\
+  -\frac{1}{n} & \frac{2}{n} \\
+\end{bmatrix}
+$$
+
+$$
+Y = \begin{bmatrix}
+  u_1 \\
+  u_2 \\
+  \vdots \\
+  u_n \\
+  v_1 \\
+  v_2 \\
+  \vdots \\
+  v_n \\    
+\end{bmatrix}
+$$
+
+$$
+X'Y=\begin{bmatrix}
+  1 & 1 & \cdots & 1 & 1 & 1 \cdots & 1 \\
+  0 & 0 & \cdots & 0 & 1 & 1 \cdots & 1 \\
+\end{bmatrix}\begin{bmatrix}
+  u_1 \\
+  u_2 \\
+  \vdots \\
+  u_n \\
+  v_1 \\
+  v_2 \\
+  \vdots \\
+  v_n \\
+\end{bmatrix}=\begin{bmatrix}
+  \sum_{i=1}^{n}u_i+v_i \\
+  \sum_{i=1}^{n}v_i \\
+\end{bmatrix}
+$$
+
+**(c) Answer:**
+
+$$
+\hat{\beta}=(X'X)^{-1}X'Y=\begin{bmatrix}
+  \frac{1}{n} & -\frac{1}{n} \\
+  -\frac{1}{n} & \frac{2}{n} \\
+\end{bmatrix}\begin{bmatrix}
+  \sum_{i=1}^{n}u_i+v_i \\
+  \sum_{i=1}^{n}v_i \\
+\end{bmatrix}=\begin{bmatrix}
+  \frac{1}{n}(\sum_{i=1}^{n}u_i+v_i)-\frac{1}{n}(\sum_{i=1}^{n}v_i) \\
+  -\frac{1}{n}(\sum_{i=1}^{n}u_i+v_i)+\frac{2}{n}(\sum_{i=1}^{n}v_i) \\
+\end{bmatrix}=\begin{bmatrix}
+  \bar{u} \\
+  \bar{v}-\bar{u} \\
+\end{bmatrix}
+$$
+
+$\hat{\beta}_0$ is the intercept of the model which can be interpreted as the sample mean for male.
+
+$\hat{\beta}_1$ is the slope of the model which can be interpreted as the difference between the sample mean for female and sample mean for male.
+
+**(d) Answer:**
+
+$$
+H=X(X'X)^{-1}X'=\begin{bmatrix}
+  1 & 0 \\
+  1 & 0 \\
+  \vdots & \vdots \\
+  1 & 0 \\
+  1 & 1 \\
+  1 & 1 \\
+  \vdots & \vdots \\
+  1 & 1 \\
+\end{bmatrix}\begin{bmatrix}
+  \frac{1}{n} & -\frac{1}{n} \\
+  -\frac{1}{n} & \frac{2}{n} \\
+\end{bmatrix}\begin{bmatrix}
+  1 & 1 & \cdots & 1 & 1 & 1 \cdots & 1 \\
+  0 & 0 & \cdots & 0 & 1 & 1 \cdots & 1 \\
+\end{bmatrix}=\begin{bmatrix}
+  \frac{1}{n} & -\frac{1}{n} \\
+  \frac{1}{n} & -\frac{1}{n} \\
+  \vdots & \vdots \\
+  \frac{1}{n} & -\frac{1}{n} \\
+  0 & \frac{1}{n} \\
+  0 & \frac{1}{n} \\
+  \vdots & \vdots \\
+  0 & \frac{1}{n} \\
+\end{bmatrix}\begin{bmatrix}
+  1 & 1 & \cdots & 1 & 1 & 1 \cdots & 1 \\
+  0 & 0 & \cdots & 0 & 1 & 1 \cdots & 1 \\
+\end{bmatrix}=\begin{bmatrix}
+  \frac{1}{n} & \frac{1}{n} & \cdots & \frac{1}{n} & 0 & 0 \cdots & 0 \\
+  \frac{1}{n} & \frac{1}{n} & \cdots & \frac{1}{n} & 0 & 0 \cdots & 0 \\
+  \vdots & \vdots & \cdots & \vdots & \vdots & \vdots \cdots & \vdots \\
+  \frac{1}{n} & \frac{1}{n} & \cdots & \frac{1}{n} & 0 & 0 \cdots & 0 \\
+  0 & 0 & \cdots & 0 & \frac{1}{n} & \frac{1}{n} \cdots & \frac{1}{n} \\
+  0 & 0 & \cdots & 0 & \frac{1}{n} & \frac{1}{n} \cdots & \frac{1}{n} \\
+  \vdots & \vdots & \cdots & \vdots & \vdots & \vdots \cdots & \vdots \\
+  0 & 0 & \cdots & 0 & \frac{1}{n} & \frac{1}{n} \cdots & \frac{1}{n} \\
+\end{bmatrix}
+$$
+
+**(e) Answer:**
+
+$$
+\hat{Y}=HY=\begin{bmatrix}
+  \frac{1}{n} & \frac{1}{n} & \cdots & \frac{1}{n} & 0 & 0 \cdots & 0 \\
+  \frac{1}{n} & \frac{1}{n} & \cdots & \frac{1}{n} & 0 & 0 \cdots & 0 \\
+  \vdots & \vdots & \cdots & \vdots & \vdots & \vdots \cdots & \vdots \\
+  \frac{1}{n} & \frac{1}{n} & \cdots & \frac{1}{n} & 0 & 0 \cdots & 0 \\
+  0 & 0 & \cdots & 0 & \frac{1}{n} & \frac{1}{n} \cdots & \frac{1}{n} \\
+  0 & 0 & \cdots & 0 & \frac{1}{n} & \frac{1}{n} \cdots & \frac{1}{n} \\
+  \vdots & \vdots & \cdots & \vdots & \vdots & \vdots \cdots & \vdots \\
+  0 & 0 & \cdots & 0 & \frac{1}{n} & \frac{1}{n} \cdots & \frac{1}{n} \\
+\end{bmatrix}\begin{bmatrix}
+  u_1 \\
+  u_2 \\
+  \vdots \\
+  u_n \\
+  v_1 \\
+  v_2 \\
+  \vdots \\
+  v_n \\    
+\end{bmatrix}=\begin{bmatrix}
+  \frac{1}{n}\sum_{i=1}^{n}u_i \\
+  \frac{1}{n}\sum_{i=1}^{n}u_i \\
+  \vdots \\
+  \frac{1}{n}\sum_{i=1}^{n}u_i \\
+  \frac{1}{n}\sum_{i=1}^{n}v_i \\
+  \frac{1}{n}\sum_{i=1}^{n}v_i \\
+  \vdots \\
+  \frac{1}{n}\sum_{i=1}^{n}v_i \\
+\end{bmatrix}=\begin{bmatrix}
+  \bar{u} \\
+  \bar{u} \\
+  \vdots \\
+  \bar{u} \\
+  \bar{v} \\
+  \bar{v} \\
+  \vdots \\
+  \bar{v} \\
+\end{bmatrix}
+$$
+
+**(f) Answer:**
+
+$$
+SSE=(Y-\hat{Y})'(Y-\hat{Y})=\begin{bmatrix}
+  u_1-\bar{u} \\
+  u_2-\bar{u} \\
+  \vdots \\
+  u_n-\bar{u} \\
+  v_1-\bar{v} \\
+  v_2-\bar{v} \\
+  \vdots \\
+  v_n-\bar{v} \\
+\end{bmatrix}'\begin{bmatrix}
+  u_1-\bar{u} \\
+  u_2-\bar{u} \\
+  \vdots \\
+  u_n-\bar{u} \\
+  v_1-\bar{v} \\
+  v_2-\bar{v} \\
+  \vdots \\
+  v_n-\bar{v} \\
+\end{bmatrix}=\sum_{i=1}^{n}(u_i-\bar{u})^2+\sum_{i=1}^{n}(v_i-\bar{v})^2
+$$
+
+$$
+MSE = \frac{SSE}{2n-2}=\frac{\sum_{i=1}^{n}(u_i-\bar{u})^2+\sum_{i=1}^{n}(v_i-\bar{v})^2}{2n-2}=\frac{(n-1)s^2_u+(n-1)s^2_v}{2n-2}
+$$
+
+**(g) Answer:**
+
+$\hat{\sigma}^2=s^2=\frac{(n-1)s^2_u+(n-1)s^2_v}{n+n-2}=\frac{(n-1)s^2_u+(n-1)s^2_v}{2n-2}$
+
+**(h) Answer:**
+
+They are equivalent.
