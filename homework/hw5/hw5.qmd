@@ -39,6 +39,24 @@ pcinck: For a 1% increase in the per capita income, the number of active physici
 
 **Answer:**
 
+The formula is given by:
+
+$SE= \sqrt{\hat{Var}(\hat{\beta_j})}=\sqrt{\frac{1}{1-R^2_j}\frac{\hat{\sigma}^2}{\sum_{i=1}^{n}(x_{ij}-\bar{x})^2}}=\sqrt{\frac{1}{1-R^2_j}\frac{\hat{\sigma}^2}{(n-1)s^2_j}}$
+
+Here are the quantities we have from SAS output:
+
+$VIF_j = \frac{1}{1 - R^2_j} = 3.82849$
+
+$\hat{\sigma}^2 = MSE(F) = 0.08284$
+
+$s^2_j=21.386$
+
+We can calculate the SE using the formula:
+
+$SE=\sqrt{\hat{Var}(\hat{\beta_j})}=\sqrt{\frac{1}{1-R^2_j}\frac{\hat{\sigma}^2}{(n-1)s^2_j}}=\sqrt{\frac{3.82849\times 0.08284}{(440-1)\times 21.386}}\approx 0.0066$
+
+This matches with the SE of the regression coef given in the SAS output for the regression.
+
 ## 3. 3. In general, would you expect VIFs to increase or decrease as more predictors are added to a model? Provide a justification for your answer. Illustrate by providing some example regressions using the CDI dataset.
 
 **Answer:**
