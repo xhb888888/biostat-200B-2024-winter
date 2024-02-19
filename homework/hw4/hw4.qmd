@@ -1,7 +1,7 @@
 ---
 title: "hw4"
 author: "Hanbei Xiong"
-format: html
+format: pdf
 editor: visual
 ---
 
@@ -369,6 +369,6 @@ The point estimates of the half lives of SpikeIgG for the three groups are:
 
 -   For the mild group: $\frac{-ln(2)}{\hat{\beta_1}}=\frac{-ln(2)}{-0.00488} = 142.62$
 
--   For the moderate group: $\frac{-ln(2)}{(\hat{\beta_1} + \hat{\beta_4})}=\frac{-ln(2)}{-0.00488 + 0.00094844} = 146.63$
+-   For the moderate group: $\frac{-ln(2)}{(\hat{\beta_1} + \hat{\beta_4})}=\frac{-ln(2)}{-0.00488 + 0.00094844} = 176.30$
 
--   For the severe group: $\frac{-ln(2)}{(\hat{\beta_1} + \hat{\beta_5})}= \frac{-ln(2)}{-0.00488 - 0.00735} = 94.89$
+-   For the severe group: $\frac{-ln(2)}{(\hat{\beta_1} + \hat{\beta_5})}= \frac{-ln(2)}{-0.00488 - 0.00735} = 56.68$

@@ -1,7 +1,7 @@
 ---
 title: "hw5"
 author: "Hanbei Xiong"
-format: pdf
+format: html
 editor: visual
 ---
 
@@ -13,31 +13,50 @@ editor: visual
 
 Here is the SAS output for the regression coefficients:
 
-![](images/WeChat38efdfd6175977a60768b8bccad939d8.png){width="494"}
+![](images/WeChat561086f146d77ab0c82e06d972b36cfb.png){width="549"}
 
 The formula with the regression coefficient is:
 
-$$\log(\text{docper}) = -1.57389 + 0.04309 \log(\text{popdens}) + 0.16328 \text{bedp1000} - 0.0004001 \text{hsgrad} + 0.27268 \text{bagrad} + 0.01841\text{poverty} - 0.00666 \text{unemp} + 0.03425 \text{pcinck}$$ We exponentiate both sides, we have:
+```{=tex}
+\begin{multline*}
+\log(\text{docper}) = -1.57389 + 0.04309 \log(\text{popdens}) + 0.16328 \text{bedp1000}\\
+- 0.0004001 \text{hsgrad} + 0.27268 \text{bagrad} + 0.01841\text{poverty} - 0.00666 \text{unemp} + 0.03425 \text{pcinck}
+\end{multline*}
+```
+We exponentiate both sides, we have:
 
-$$\text{docper} = e^{-1.57389} \times e^{0.04309 \log(\text{popdens})} \times e^{0.16328 \text{bedp1000}} \times e^{-0.0004001 \text{hsgrad}} \times e^{0.27268 \text{bagrad}} \times e^{0.01841\text{poverty}} \times e^{-0.00666 \text{unemp}} \times e^{0.03425 \text{pcinck}}$$ We simplify the formula to:
+```{=tex}
+\begin{multline*}
+\text{docper} = e^{-1.57389} \times e^{0.04309 \log(\text{popdens})} \times e^{0.16328 \text{bedp1000}}\\
+\times e^{-0.0004001 \text{hsgrad}} \times e^{0.27268 \text{bagrad}} \times e^{0.01841\text{poverty}} \times e^{-0.00666 \text{unemp}} \times e^{0.03425 \text{pcinck}}
+\end{multline*}
+```
+We simplify the formula to:
 
-$$\text{docper} = e^{-1.57389} \times \text{popdens}^{0.04309} \times e^{0.16328 \text{bedp1000}} \times e^{-0.0004001 \text{hsgrad}} \times e^{0.27268 \text{bagrad}} \times e^{0.01841\text{poverty}} \times e^{-0.00666 \text{unemp}} \times e^{0.03425 \text{pcinck}}$$ logpopdens: For a 1% increase in population density, the number of active physician per 1000 people is multiplied by 1.000339 while holding all other predictors constant.
+```{=tex}
+\begin{multline*}
+\text{docper} = e^{-1.57389} \times \text{popdens}^{0.04309} \times e^{0.16328 \text{bedp1000}}\\
+\times e^{-0.0004001 \text{hsgrad}} \times e^{0.27268 \text{bagrad}} \times e^{0.01841\text{poverty}} \times e^{-0.00666 \text{unemp}} \times e^{0.03425 \text{pcinck}}\end{multline*}
+```
+logpopdens: For a 1% increase in population density, the expected number of active physician per 1000 people is multiplied by 1.00482 while holding all other predictors constant.
 
-bedp1000: For a 1 unit increase in the number of hospital beds per 1000 people, the number of active physician per 1000 people is multiplied by 1.1774 while holding all other predictors constant.
+bedp1000: For a 1 unit increase in the number of hospital beds per 1000 people, the expected number of active physician per 1000 people is multiplied by 1.166 while holding all other predictors constant.
 
-hsgrad: For a 1% increase in the percentage of high school graduates, the number of active physician per 1000 people is multiplied by 0.9996 while holding all other predictors constant.
+hsgrad: For a 1% increase in the percentage of college graduates, the expected number of active physician per 1000 people is multiplied by 1.017 while holding all other predictors constant.
 
-bagrad: For a 1% increase in the percentage of college graduates, the number of active physician per 1000 people is multiplied by 1.312 while holding all other predictors constant.
+poverty: For a 1% increase in the percentage of people living in poverty, the expected number of active physician per 1000 people is multiplied by 1.041 while holding all other predictors constant.
 
-poverty: For a 1% increase in the percentage of people living in poverty, the number of active physician per 1000 people is multiplied by 1.0186 while holding all other predictors constant.
+unemp: For a 1% increase in the percentage of unemployment, the expected number of active physician per 1000 people is multiplied by 0.974 while holding all other predictors constant.
 
-unemp: For a 1% increase in the percentage of unemployment, the number of active physician per 1000 people is multiplied by 0.9934 while holding all other predictors constant.
-
-pcinck: For a 1% increase in the per capita income, the number of active physician per 1000 people is multiplied by 1.0347 while holding all other predictors constant.
+pcinck: For a 1% increase in the per capita income, the expected number of active physician per 1000 people is multiplied by 1.067 while holding all other predictors constant.
 
 ## 2. For the predictor pcinck, verify that the SE of the regression coef is equal to the formula involving R\^2_j given in lecture, ie, find each of the quantities in the SE and calculate the SE, verifying it is equal to the SE given in the SAS output for the regression.
 
 **Answer:**
+
+By regressing pcinck on other predictors, we get the $R^2_j$
+
+![](images/WeChatcc8572e35727c10cc6c4cd92f80536cc.png){width="731"}
 
 The formula is given by:
 
@@ -45,15 +64,15 @@ $SE= \sqrt{\hat{Var}(\hat{\beta_j})}=\sqrt{\frac{1}{1-R^2_j}\frac{\hat{\sigma}^2
 
 Here are the quantities we have from SAS output:
 
-$VIF_j = \frac{1}{1 - R^2_j} = 3.82849$
+$R^2_j = 0.5808$
 
-$\hat{\sigma}^2 = MSE(F) = 0.08284$
+$\hat{\sigma}^2 = MSE(F) = 0.09370$
 
-$s^2_j=21.386$
+$s^2_j=4.05919^2=16.477$
 
 We can calculate the SE using the formula:
 
-$SE=\sqrt{\hat{Var}(\hat{\beta_j})}=\sqrt{\frac{1}{1-R^2_j}\frac{\hat{\sigma}^2}{(n-1)s^2_j}}=\sqrt{\frac{3.82849\times 0.08284}{(440-1)\times 21.386}}\approx 0.0066$
+$SE=\sqrt{\hat{Var}(\hat{\beta_j})}=\sqrt{\frac{1}{1-R^2_j}\frac{\hat{\sigma}^2}{(n-1)s^2_j}}=\sqrt{\frac{ 0.09370}{(1-0.5808)\times (440-1)\times 16.477}}\approx 0.00556$
 
 This matches with the SE of the regression coef given in the SAS output for the regression.
 
@@ -99,8 +118,13 @@ Hence, $I-H$ is symmetric.
 
 We can show $H$ is idempotent:
 
-$HH=(X(X^TX)^{-1}X^T)(X(X^TX)^{-1}X^T)=X(X^TX)^{-1}(X^TX)(X^TX)^{-1}X^T=X(X^TX)^{-1}X^T=H$
-
+```{=tex}
+\begin{align*}
+HH&=(X(X^TX)^{-1}X^T)(X(X^TX)^{-1}X^T)\\
+&=X(X^TX)^{-1}(X^TX)(X^TX)^{-1}X^T\\
+&=X(X^TX)^{-1}X^T=H
+\end{align*}
+```
 Then, we can show $I-H$ is idempotent:
 
 $(I-H)(I-H)=I^2-IH-HI+H^2=I-H-H+HH=I-H-H+H=I-H$
@@ -121,8 +145,15 @@ $JJ=(11')(11')=1(1'1)'1=11'=n11'=nJ$ where n is number of element in vector **1*
 
 Then, we can show $I-\frac{1}{n}J$ is idempotent:
 
-$(I-\frac{1}{n}J)(I-\frac{1}{n}J)=I^2-I(\frac{1}{n}J)-(\frac{1}{n}J)I+(\frac{1}{n}J)^2=I-\frac{1}{n}J-\frac{1}{n}J+\frac{1}{n^2}JJ=I-\frac{1}{n}J-\frac{1}{n}J+\frac{1}{n^2}nJ=I-\frac{1}{n}J-\frac{1}{n}J+\frac{1}{n}J=I-\frac{1}{n}J$
-
+```{=tex}
+\begin{align*}
+(I-\frac{1}{n}J)(I-\frac{1}{n}J)&=I^2-I(\frac{1}{n}J)-(\frac{1}{n}J)I+(\frac{1}{n}J)^2\\
+&=I-\frac{1}{n}J-\frac{1}{n}J+\frac{1}{n^2}JJ\\
+&=I-\frac{1}{n}J-\frac{1}{n}J+\frac{1}{n^2}nJ\\
+&=I-\frac{1}{n}J-\frac{1}{n}J+\frac{1}{n}J\\
+&=I-\frac{1}{n}J
+\end{align*}
+```
 We finished the proof.
 
 3.  Consider the model $Y=X\beta+\epsilon$, $E(\epsilon)=0$, $Var(\epsilon)=\sigma^2I$, Show by using matrix operations:
@@ -141,10 +172,23 @@ $Var(Y)=Var(X\beta+\epsilon)=Var(X\beta)+Var(\epsilon)+2Cov(X\beta,\epsilon)=0+\
 
 **(b) Answer:**
 
-$E(\hat{\beta})=E((X'X)^{-1}X'Y)=(X'X)^{-1}X'E(Y)=(X'X)^{-1}X'X\beta=(X'X)^{-1}(X'X)\beta=\beta$
-
-$Var(\hat{\beta})=Var((X'X)^{-1}X'Y)=(X'X)^{-1}X'Var(Y)X(X'X)^{-1}=\sigma^2(X'X)^{-1}X'X(X'X)^{-1}=\sigma^2(X'X)^{-1}$
-
+```{=tex}
+\begin{align*}
+E(\hat{\beta})&=E((X'X)^{-1}X'Y)\\
+&=(X'X)^{-1}X'E(Y)\\
+&=(X'X)^{-1}X'X\beta\\
+&=(X'X)^{-1}(X'X)\beta\\
+&=\beta
+\end{align*}
+```
+```{=tex}
+\begin{align*}
+Var(\hat{\beta})&=Var((X'X)^{-1}X'Y)\\
+&=(X'X)^{-1}X'Var(Y)X(X'X)^{-1}\\
+&=\sigma^2(X'X)^{-1}X'X(X'X)^{-1}\\
+&=\sigma^2(X'X)^{-1}
+\end{align*}
+```
 **(c) Answer:**
 
 $E(\hat{Y})=E(HY)=E(X(X'X)^{-1}X'Y)=X(X'X)^{-1}X'E(Y)=X(X'X)^{-1}X'X\beta=X\beta$
@@ -273,8 +317,10 @@ $\hat{\beta}_1$ is the slope of the model which can be interpreted as the differ
 
 **(d) Answer:**
 
-$$
-H=X(X'X)^{-1}X'=\begin{bmatrix}
+```{=tex}
+\begin{align*}
+H&=X(X'X)^{-1}X'\\
+&=\begin{bmatrix}
   1 & 0 \\
   1 & 0 \\
   \vdots & \vdots \\
@@ -289,7 +335,8 @@ H=X(X'X)^{-1}X'=\begin{bmatrix}
 \end{bmatrix}\begin{bmatrix}
   1 & 1 & \cdots & 1 & 1 & 1 \cdots & 1 \\
   0 & 0 & \cdots & 0 & 1 & 1 \cdots & 1 \\
-\end{bmatrix}=\begin{bmatrix}
+\end{bmatrix}\\
+&=\begin{bmatrix}
   \frac{1}{n} & -\frac{1}{n} \\
   \frac{1}{n} & -\frac{1}{n} \\
   \vdots & \vdots \\
@@ -301,7 +348,8 @@ H=X(X'X)^{-1}X'=\begin{bmatrix}
 \end{bmatrix}\begin{bmatrix}
   1 & 1 & \cdots & 1 & 1 & 1 \cdots & 1 \\
   0 & 0 & \cdots & 0 & 1 & 1 \cdots & 1 \\
-\end{bmatrix}=\begin{bmatrix}
+\end{bmatrix}\\
+&=\begin{bmatrix}
   \frac{1}{n} & \frac{1}{n} & \cdots & \frac{1}{n} & 0 & 0 \cdots & 0 \\
   \frac{1}{n} & \frac{1}{n} & \cdots & \frac{1}{n} & 0 & 0 \cdots & 0 \\
   \vdots & \vdots & \cdots & \vdots & \vdots & \vdots \cdots & \vdots \\
@@ -311,8 +359,8 @@ H=X(X'X)^{-1}X'=\begin{bmatrix}
   \vdots & \vdots & \cdots & \vdots & \vdots & \vdots \cdots & \vdots \\
   0 & 0 & \cdots & 0 & \frac{1}{n} & \frac{1}{n} \cdots & \frac{1}{n} \\
 \end{bmatrix}
-$$
-
+\end{align*}
+```
 **(e) Answer:**
 
 $$

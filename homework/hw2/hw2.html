@@ -104,7 +104,7 @@ window.Quarto = {
 <p><strong>Answer:</strong></p>
 <p><span class="math inline">\(SSR=\sum(\hat{Y}-\bar{Y})^2\)</span></p>
 <p>Since <span class="math inline">\((\bar{X},\bar{Y})\)</span> must be on the estimated regression line.</p>
-<p><span class="math inline">\(SSR=\sum(\hat{\beta_0}+\hat{\beta_1}X_i-\hat{\beta_0}-\hat{\beta_1}\bar{X})\)</span></p>
+<p><span class="math inline">\(SSR=\sum(\hat{\beta_0}+\hat{\beta_1}X_i-\hat{\beta_0}-\hat{\beta_1}\bar{X})^2\)</span></p>
 <p><span class="math inline">\(SSR=\hat{\beta_1^2}\sum(X_i-\bar{X})^2\)</span></p>
 <p><span class="math inline">\(F=\frac{MSR}{MSE}=\frac{\frac{SSR}{1}}{\frac{SSE}{n-2}}=\frac{\hat{\beta_1^2}\sum(X_i-\bar{X})^2}{MSE}\)</span></p>
 <p><span class="math inline">\(SE(\hat{\beta_1})=\frac{\sqrt{MSE}}{\sqrt{\sum(X_i-\bar{X})^2}}\)</span></p>
@@ -117,14 +117,14 @@ window.Quarto = {
 <p>Note:</p>
 <p><span class="math inline">\(\hat{\beta_0}=\bar{Y}-\hat{\beta_1}\bar{X}\)</span></p>
 <p><span class="math inline">\(\hat{\beta_1}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}\)</span></p>
-<p><span class="math inline">\(\hat{\sigma}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2\)</span></p>
+<p><span class="math inline">\(\hat{\sigma}^2=\frac{1}{n-2}\sum(Y_i-\hat{Y_i})^2\)</span></p>
 <p><span class="math inline">\(R^2=\frac{SSR}{SSTO}=\frac{\sum(\hat{Y_i}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}\)</span></p>
 <p><span class="math inline">\(t=\frac{\hat{\beta_1}}{SE(\hat{\beta_1})}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}\)</span></p>
 <p><strong>(a) Answer:</strong></p>
 <p>Given <span class="math inline">\(x_i\)</span> is replaced be <span class="math inline">\(cx_i\)</span>,</p>
 <p><span class="math inline">\(\hat{\beta_0^*}=\bar{Y}-\hat{\beta_1^*}(c\bar{X})=\hat{\beta_0}\)</span></p>
 <p><span class="math inline">\(\hat{\beta_1^*}=\frac{\sum(cX_i-c\bar{X})(Y_i-\bar{Y})}{\sum(cX_i-c\bar{X})^2}=\frac{c\sum(X_i-\bar{X})(Y_i-\bar{Y})}{c^2\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{c\sum(X_i-\bar{X})^2}=\frac{1}{c}\hat{\beta_1}\)</span></p>
-<p><span class="math inline">\(\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2\)</span></p>
+<p><span class="math inline">\(\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\hat{Y_i})^2=\hat{\sigma}^2\)</span></p>
 <p><span class="math inline">\(R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}cX_i-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}+\frac{1}{c}\hat{\beta_1}cX_i-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^{2}\)</span></p>
 <p><span class="math inline">\(t^*=\frac{\hat{\beta_1^*}\sqrt{\sum(cX_i-c\bar{X})^2}}{\hat{\sigma^*}}=\frac{\frac{1}{c}\hat{\beta_1}\sqrt{c^2\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=t\)</span></p>
 <p>In this linear transformation, the <span class="math inline">\(\hat{\beta_0}\)</span>, <span class="math inline">\(\hat{\sigma}^2\)</span>, <span class="math inline">\(t\)</span>-statistic and <span class="math inline">\(R^2\)</span> are invariant. The <span class="math inline">\(\hat{\beta_1}\)</span> is scaled by <span class="math inline">\(\frac{1}{c}\)</span>.</p>
@@ -132,7 +132,7 @@ window.Quarto = {
 <p>Given <span class="math inline">\(x_i\)</span> is replaced be <span class="math inline">\(x_i+d\)</span>,</p>
 <p><span class="math inline">\(\hat{\beta_0^*}=\bar{Y}-\hat{\beta_1^*}(\bar{X}+d)=\bar{Y}-\hat{\beta_1}(\bar{X}+d)=\bar{Y}-\hat{\beta_1}\bar{X}-\hat{\beta_1}d=\hat{\beta_0}-\hat{\beta_1}d\)</span></p>
 <p><span class="math inline">\(\hat{\beta_1^*}=\frac{\sum((X_i+d)-(\bar{X}+d))(Y_i-\bar{Y})}{\sum((X_i+d)-(\bar{X}+d))^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\hat{\beta_1}\)</span></p>
-<p><span class="math inline">\(\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2\)</span></p>
+<p><span class="math inline">\(\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\hat{Y_i})^2=\hat{\sigma}^2\)</span></p>
 <p><span class="math inline">\(R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}(X_i+d)-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i+\hat{\beta_1^*}d-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}-\hat{\beta_1}d+\hat{\beta_1}X_i+\hat{\beta_1}d-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^{2}\)</span></p>
 <p><span class="math inline">\(t^*=\frac{\hat{\beta_1^*}\sqrt{\sum((X_i+d)-(\bar{X}+d))^2}}{\hat{\sigma^*}}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=t\)</span></p>
 <p>In this linear transformation, the <span class="math inline">\(\hat{\beta_1}\)</span>, <span class="math inline">\(\hat{\sigma}^2\)</span>, <span class="math inline">\(t\)</span>-statistic and <span class="math inline">\(R^2\)</span> are invariant. The <span class="math inline">\(\hat{\beta_0}\)</span> is shifted by <span class="math inline">\(-\hat{\beta_1}d\)</span>.</p>
@@ -140,7 +140,7 @@ window.Quarto = {
 <p>Given <span class="math inline">\(y_i\)</span> is replaced be <span class="math inline">\(ky_i\)</span>,</p>
 <p><span class="math inline">\(\hat{\beta_0^*}=k\bar{Y}-\hat{\beta_1^*}\bar{X}=k\bar{Y}-k\hat{\beta_1}\bar{X}=k(\bar{Y}-\hat{\beta_1}\bar{X})=k\hat{\beta_0}\)</span></p>
 <p><span class="math inline">\(\hat{\beta_1^*}=\frac{\sum(X_i-\bar{X})(kY_i-k\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{k\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=k\hat{\beta_1}\)</span></p>
-<p><span class="math inline">\(\hat{\sigma^*}^2=\frac{1}{n-2}\sum(kY_i-k\bar{Y_i})^2=\frac{k^2}{n-2}\sum(Y_i-\bar{Y_i})^2=k^2\hat{\sigma}^2\)</span></p>
+<p><span class="math inline">\(\hat{\sigma^*}^2=\frac{1}{n-2}\sum(kY_i-\hat{Y_i^*})^2=\frac{k^2}{n-2}\sum(Y_i-\bar{Y_i})^2=k^2\hat{\sigma}^2\)</span></p>
 <p><span class="math inline">\(R^{*2}=\frac{\sum(\hat{Y_i^*}-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{\sum(k\hat{\beta_0}+k\hat{\beta_1}X_i-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{k^2\sum(\hat{\beta_0}+\hat{\beta_1}X_i-\bar{Y})^2}{k^2\sum(Y_i-\bar{Y})^2}=R^2\)</span></p>
 <p><span class="math inline">\(t^*=\frac{\hat{\beta_1^*}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma^*}}=\frac{k\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{k\hat{\sigma}}=\frac{\hat{\beta_1}\sqrt{\sum(X_i-\bar{X})^2}}{\hat{\sigma}}=t\)</span></p>
 <p>In this linear transformation, <span class="math inline">\(\hat{\beta_0}\)</span> and <span class="math inline">\(\hat{\beta_1}\)</span> are both scaled by k, <span class="math inline">\(\hat{\sigma}^2\)</span> is scaled by <span class="math inline">\(k^2\)</span>, <span class="math inline">\(t\)</span>-statistic and <span class="math inline">\(R^2\)</span> are invariant.</p>
@@ -148,7 +148,7 @@ window.Quarto = {
 <p>Given <span class="math inline">\(y_i\)</span> is replaced be <span class="math inline">\(y_i+d\)</span>,</p>
 <p><span class="math inline">\(\hat{\beta_0^*}=\bar{Y}+d-\hat{\beta_1^*}\bar{X}=\bar{Y}+d-\hat{\beta_1}\bar{X}=\hat{\beta_0}+d\)</span></p>
 <p><span class="math inline">\(\hat{\beta_1^*}=\frac{\sum(X_i-\bar{X})(Y_i+d-\bar{Y}-d)}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\hat{\beta_1}\)</span></p>
-<p><span class="math inline">\(\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i+d-\bar{Y_i}-d)^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2\)</span></p>
+<p><span class="math inline">\(\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i+d-\hat{Y_i^*})^2=\frac{1}{n-2}\sum(Y_i+d-\hat{\beta_0}-d-\hat{\beta_1}X_i)^2=\frac{1}{n-2}\sum(Y_i-\hat{Y_i})^2=\hat{\sigma}^2\)</span></p>
 <p><span class="math inline">\(R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y}-d)^2}{\sum(Y_i+d-\bar{Y_i}-d)^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i-\bar{Y}-d)^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}+d+\hat{\beta_1}X_i-\bar{Y}-d)^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{Y_i}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^2\)</span></p>
 <p><span class="math inline">\(t^*=\frac{\hat{\beta_1^*}\sqrt{\sum(Y_i+d-\bar{Y_i}-d)^2}}{\hat{\sigma^*}}=\frac{\hat{\beta_1}\sqrt{\sum(Y_i-\bar{Y})^2}}{\hat{\sigma}}=t\)</span></p>
 <p>In this linear transformation, <span class="math inline">\(\hat{\beta_0}\)</span> is shifted by <span class="math inline">\(d\)</span>, <span class="math inline">\(\hat{\beta_1}\)</span>, <span class="math inline">\(\hat{\sigma}^2\)</span>, <span class="math inline">\(t\)</span>-statistic and <span class="math inline">\(R^2\)</span> are invariant.</p>

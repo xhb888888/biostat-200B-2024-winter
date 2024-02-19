@@ -15,7 +15,7 @@ $SSR=\sum(\hat{Y}-\bar{Y})^2$
 
 Since $(\bar{X},\bar{Y})$ must be on the estimated regression line.
 
-$SSR=\sum(\hat{\beta_0}+\hat{\beta_1}X_i-\hat{\beta_0}-\hat{\beta_1}\bar{X})$
+$SSR=\sum(\hat{\beta_0}+\hat{\beta_1}X_i-\hat{\beta_0}-\hat{\beta_1}\bar{X})^2$
 
 $SSR=\hat{\beta_1^2}\sum(X_i-\bar{X})^2$
 
@@ -37,7 +37,7 @@ $\hat{\beta_0}=\bar{Y}-\hat{\beta_1}\bar{X}$
 
 $\hat{\beta_1}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}$
 
-$\hat{\sigma}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2$
+$\hat{\sigma}^2=\frac{1}{n-2}\sum(Y_i-\hat{Y_i})^2$
 
 $R^2=\frac{SSR}{SSTO}=\frac{\sum(\hat{Y_i}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}$
 
@@ -51,7 +51,7 @@ $\hat{\beta_0^*}=\bar{Y}-\hat{\beta_1^*}(c\bar{X})=\hat{\beta_0}$
 
 $\hat{\beta_1^*}=\frac{\sum(cX_i-c\bar{X})(Y_i-\bar{Y})}{\sum(cX_i-c\bar{X})^2}=\frac{c\sum(X_i-\bar{X})(Y_i-\bar{Y})}{c^2\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{c\sum(X_i-\bar{X})^2}=\frac{1}{c}\hat{\beta_1}$
 
-$\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2$
+$\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\hat{Y_i})^2=\hat{\sigma}^2$
 
 $R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}cX_i-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}+\frac{1}{c}\hat{\beta_1}cX_i-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^{2}$
 
@@ -67,7 +67,7 @@ $\hat{\beta_0^*}=\bar{Y}-\hat{\beta_1^*}(\bar{X}+d)=\bar{Y}-\hat{\beta_1}(\bar{X
 
 $\hat{\beta_1^*}=\frac{\sum((X_i+d)-(\bar{X}+d))(Y_i-\bar{Y})}{\sum((X_i+d)-(\bar{X}+d))^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\hat{\beta_1}$
 
-$\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2$
+$\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i-\hat{Y_i})^2=\hat{\sigma}^2$
 
 $R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}(X_i+d)-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i+\hat{\beta_1^*}d-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}-\hat{\beta_1}d+\hat{\beta_1}X_i+\hat{\beta_1}d-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^{2}$
 
@@ -83,7 +83,7 @@ $\hat{\beta_0^*}=k\bar{Y}-\hat{\beta_1^*}\bar{X}=k\bar{Y}-k\hat{\beta_1}\bar{X}=
 
 $\hat{\beta_1^*}=\frac{\sum(X_i-\bar{X})(kY_i-k\bar{Y})}{\sum(X_i-\bar{X})^2}=\frac{k\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=k\hat{\beta_1}$
 
-$\hat{\sigma^*}^2=\frac{1}{n-2}\sum(kY_i-k\bar{Y_i})^2=\frac{k^2}{n-2}\sum(Y_i-\bar{Y_i})^2=k^2\hat{\sigma}^2$
+$\hat{\sigma^*}^2=\frac{1}{n-2}\sum(kY_i-\hat{Y_i^*})^2=\frac{k^2}{n-2}\sum(Y_i-\bar{Y_i})^2=k^2\hat{\sigma}^2$
 
 $R^{*2}=\frac{\sum(\hat{Y_i^*}-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{\sum(k\hat{\beta_0}+k\hat{\beta_1}X_i-k\bar{Y})^2}{\sum(kY_i-k\bar{Y})^2}=\frac{k^2\sum(\hat{\beta_0}+\hat{\beta_1}X_i-\bar{Y})^2}{k^2\sum(Y_i-\bar{Y})^2}=R^2$
 
@@ -99,7 +99,7 @@ $\hat{\beta_0^*}=\bar{Y}+d-\hat{\beta_1^*}\bar{X}=\bar{Y}+d-\hat{\beta_1}\bar{X}
 
 $\hat{\beta_1^*}=\frac{\sum(X_i-\bar{X})(Y_i+d-\bar{Y}-d)}{\sum(X_i-\bar{X})^2}=\frac{\sum(X_i-\bar{X})(Y_i-\bar{Y})}{\sum(X_i-\bar{X})^2}=\hat{\beta_1}$
 
-$\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i+d-\bar{Y_i}-d)^2=\frac{1}{n-2}\sum(Y_i-\bar{Y_i})^2=\hat{\sigma}^2$
+$\hat{\sigma^*}^2=\frac{1}{n-2}\sum(Y_i+d-\hat{Y_i^*})^2=\frac{1}{n-2}\sum(Y_i+d-\hat{\beta_0}-d-\hat{\beta_1}X_i)^2=\frac{1}{n-2}\sum(Y_i-\hat{Y_i})^2=\hat{\sigma}^2$
 
 $R^{*2}=\frac{\sum(\hat{Y_i^*}-\bar{Y}-d)^2}{\sum(Y_i+d-\bar{Y_i}-d)^2}=\frac{\sum(\hat{\beta_0^*}+\hat{\beta_1^*}X_i-\bar{Y}-d)^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{\beta_0}+d+\hat{\beta_1}X_i-\bar{Y}-d)^2}{\sum(Y_i-\bar{Y})^2}=\frac{\sum(\hat{Y_i}-\bar{Y})^2}{\sum(Y_i-\bar{Y})^2}=R^2$
 
