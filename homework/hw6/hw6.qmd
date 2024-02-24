@@ -1,0 +1,46 @@
+---
+title: "hw6"
+author: "Hanbei Xiong"
+format: html
+editor: visual
+---
+
+# Question 1
+
+![](images/WeChatd86e31862e0f89c52c04f8db62e1414c.png)
+
+**(a) Answer:**
+
+```{=tex}
+\begin{align*}
+\hat{\beta}_{(-i)}&=(X_{(-i)}'X_{(-i)})^{-1}X_{(-i)}'Y_{(-i)}\\
+&=[(X'X)^{-1}+\frac{(X'X)^{-1}x_ix_i'(X'X)^{-1}}{1-h_i}](X'Y-x_iY_i)\\
+&=(X'X)^{-1}X'Y-(X'X)^{-1}x_iY_i+(\frac{(X'X)^{-1}x_ix_i'(X'X)^{-1}}{1-h_i})X'Y-(\frac{(X'X)^{-1}x_ix_i'(X'X)^{-1}}{1-h_i})x_iY_i\\
+&=\hat{\beta}-\frac{(X'X)^{-1}x_iY_i}{1-h_i}+(\frac{(X'X)^{-1}x_ix_i'(X'X)^{-1}}{1-h_i})x_iY_i\\
+&+(\frac{(X'X)^{-1}x_ix_i'(X'X)^{-1}}{1-h_i})X'Y-(\frac{(X'X)^{-1}x_ix_i'(X'X)^{-1}}{1-h_i})x_iY_i\\
+&=\hat{\beta}-\frac{(X'X)^{-1}x_iY_i}{1-h_i}+(\frac{(X'X)^{-1}x_ix_i'(X'X)^{-1}}{1-h_i})X'Y\\
+&=\hat{\beta}-\frac{(X'X)^{-1}x_iY_i}{1-h_i}+(\frac{(X'X)^{-1}x_ix_i'(X'X)^{-1}}{1-h_i})X'X\beta\\
+&=\hat{\beta}-\frac{(X'X)^{-1}x_iY_i}{1-h_i}+\frac{(X'X)^{-1}x_ix_i'\beta}{1-h_i}\\
+&=\hat{\beta}-\frac{(X'X)^{-1}x_i(Y_i-x_i'\beta)}{1-h_i}\\
+&=\hat{\beta}-\frac{(X'X)^{-1}x_ie_i}{1-h_i}
+\end{align*}
+```
+
+**(b) Answer:**
+
+\begin{align*}
+y_i-x'_{i}\hat{\beta}_{(-i)}&=y_i-x'_i(\hat{\beta}-\frac{(X'X)^{-1}x_ie_i}{1-h_i})\\
+&=y_i-x'_i\hat{\beta}+\frac{x'_i(X'X)^{-1}x_ie_i}{1-h_i}\\
+&=\frac{(x'_i\hat{\beta}+e_i)(1-h_i)}{1-h_i}-\frac{x'_i\hat{\beta}(1-h_i)}{1-h_i}+\frac{h_ie_i}{1-h_i}\\
+&=\frac{e_i(1-h_i)}{1-h_i}+\frac{h_ie_i}{1-h_i}\\
+&=\frac{e_i(1-h_i+h_i)}{1-h_i}\\
+&=\frac{e_i}{1-h_i}
+\end{align*}
+
+# Question 2
+
+![](images/WeChatd1bf81cdec0eb521ce0ff93608b25575.png)
+
+# Question 3
+
+![](images/WeChat6a6d80ee6a3962848a263b5604785992.png)
