@@ -25,9 +25,9 @@ editor: visual
 &=\hat{\beta}-\frac{(X'X)^{-1}x_ie_i}{1-h_i}
 \end{align*}
 ```
-
 **(b) Answer:**
 
+```{=tex}
 \begin{align*}
 y_i-x'_{i}\hat{\beta}_{(-i)}&=y_i-x'_i(\hat{\beta}-\frac{(X'X)^{-1}x_ie_i}{1-h_i})\\
 &=y_i-x'_i\hat{\beta}+\frac{x'_i(X'X)^{-1}x_ie_i}{1-h_i}\\
@@ -36,11 +36,71 @@ y_i-x'_{i}\hat{\beta}_{(-i)}&=y_i-x'_i(\hat{\beta}-\frac{(X'X)^{-1}x_ie_i}{1-h_i
 &=\frac{e_i(1-h_i+h_i)}{1-h_i}\\
 &=\frac{e_i}{1-h_i}
 \end{align*}
-
+```
 # Question 2
 
 ![](images/WeChatd1bf81cdec0eb521ce0ff93608b25575.png)
 
+**(a) Answer:**
+
+***Figure 1:***
+
+![](images/WeChataabf1fb4cde6d002e4aea0383e4c8b36.png){width="528"}
+
+By observing Figure 1, we detect ids in red have high influence to the model. The size of the circle corresponds to the quantity of cook's D. The x axis is the leverage and y axis is the studentized residuals.
+
+**(b) Answer:**
+
+***Figure 2: id vs Cook's D***
+
+![](images/WeChat094c296b0c192fb78c0bc1655dfebcb9.png){width="530"}
+
+***Figure 3: Studentized Residual without current observation vs Leverage***
+
+![](images/WeChatd65505949404394ce8b1d0d386aa3a83.png){width="540"}
+
+***Figure 4: xray vs loglength***
+
+![](images/322741709020829_.pic.jpg){width="534"}
+
+***Figure 5: census vs loglength***
+
+![](images/322751709020857_.pic.jpg){width="541"}
+
+***Figure 6: age vs loglength***
+
+![](images/322761709020878_.pic.jpg){width="549"}
+
+By observing Figure 2, we can see hospital with id 47 and id 112 have the highest cook's id. By observing Figure 3, we can see hospital with id 47 has the highest studentized residual and id 112 have the highest leverage. By observing figure 4, 5 and 6, we can see hospital with id 47 and id 112 seem to be outliers. They have very high loglength compared to observation with same level of independent variables. The usual loglength of these two hospitals make them potentially influential.
+
+**(c) Answer:**
+
+***Figure 7: Reduced Observation Model measures***
+
+![](images/WeChat9d6a7ad21c6f54197d37ffe636f25854.png){width="464"}
+
+***Figure 8: Full Observation Model measures***
+
+![](images/WeChatd4896783369f5f4effcbf2df0b904d31.png){width="461"}
+
+Comparing Figure 7 and Figure 8, the regression parameter estimates in the reduced observation model are smaller than the regression parameter estimates in the full observation model.. The p value for predict age has a big shift from 0.0072 (Figure 8) to 0.0385 (Figure 7). The statistical significance of predictor age in the model is waned after reducing the observations. The p values for overall F tests in both models remain the same. The root MSE in reduced observation model is smaller than that in full observation model which indicate the performance of the model improved after removing the outliers.
+
+**(d) Answer:**
+
+***Figure 9: Final model Result***
+
+![](images/WeChat23eb76f93829ab4b18eefad3072dd8fa.png){width="456"}
+
+Figure 9 is the result of the final model. I applied a log transformation on census after observing the component-plus-residual plots for each of the predictor.
+
 # Question 3
 
-![](images/WeChat6a6d80ee6a3962848a263b5604785992.png)
+![](images/WeChat6a6d80ee6a3962848a263b5604785992.png) **Answer:**
+
+***Figure 10: Table listing top 5 models and selection criteria***
+
+![](images/WeChatbec88fdc96e9873d31450fafb1ac279f.png){width="598"}
+
+I break the variable region to dummy variable (regw, regnc, regs). I applied log transformation on length, beds and ratio/census after observing positive right skewness in their distributions (Note that I name this variable as rationp to avoid containing dash in my variable name).
+
+From the result displayed in Figure 10, we can see the 5 predictors model containing regw, logbeds, xray, loglength, logrationp are ranked as the top 1 among many subsets. These five predictors appear to be in each of the subset among the top 5 subsets. The top 1 model has the lowest AIC, BIC, and C(p) measures but $R^2$ in the second model outruns the top 1 model by 0.51.
