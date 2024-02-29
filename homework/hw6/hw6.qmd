@@ -45,9 +45,17 @@ y_i-x'_{i}\hat{\beta}_{(-i)}&=y_i-x'_i(\hat{\beta}-\frac{(X'X)^{-1}x_ie_i}{1-h_i
 
 ***Figure 1:***
 
-![](images/WeChataabf1fb4cde6d002e4aea0383e4c8b36.png){width="528"}
+![](images/WeChatf4e6830e3bf0fd0511061d1dbbaf6050.png){width="498"}
 
 By observing Figure 1, we detect ids in red have high influence to the model. The size of the circle corresponds to the quantity of cook's D. The x axis is the leverage and y axis is the studentized residuals.
+
+In general, here are the ids with unusual leverage, residual, cook's D:
+
+leverage: 112, 104
+
+residual: 47, 33, 43, 54
+
+cook's D: 47, 112
 
 **(b) Answer:**
 
@@ -83,7 +91,7 @@ By observing Figure 2, we can see hospital with id 47 and id 112 have the highes
 
 ![](images/WeChatd4896783369f5f4effcbf2df0b904d31.png){width="461"}
 
-Comparing Figure 7 and Figure 8, the regression parameter estimates in the reduced observation model are smaller than the regression parameter estimates in the full observation model.. The p value for predict age has a big shift from 0.0072 (Figure 8) to 0.0385 (Figure 7). The statistical significance of predictor age in the model is waned after reducing the observations. The p values for overall F tests in both models remain the same. The root MSE in reduced observation model is smaller than that in full observation model which indicate the performance of the model improved after removing the outliers.
+Comparing Figure 7 and Figure 8, the regression parameter estimates in the reduced observation model are smaller than the regression parameter estimates in the full observation model. The p value for predict age has a big shift from 0.0072 (Figure 8) to 0.0385 (Figure 7). The statistical significance of predictor age in the model is waned after reducing the observations. The p values for overall F tests in both models remain the same. The root MSE in reduced observation model is smaller than that in full observation model which indicate the performance of the model improved after removing the outliers.
 
 **(d) Answer:**
 
@@ -91,16 +99,60 @@ Comparing Figure 7 and Figure 8, the regression parameter estimates in the reduc
 
 ![](images/WeChat23eb76f93829ab4b18eefad3072dd8fa.png){width="456"}
 
-Figure 9 is the result of the final model. I applied a log transformation on census after observing the component-plus-residual plots for each of the predictor.
+Figure 9 is the result of the final model. I applied a log transformation on census after observing the component-plus-residual plots for each of the predictor. The numeric and graphic outputs generated in the procedure are displayed in Appendix.
 
 # Question 3
 
-![](images/WeChat6a6d80ee6a3962848a263b5604785992.png) **Answer:**
+![](images/WeChat6a6d80ee6a3962848a263b5604785992.png)
+
+**Answer:**
 
 ***Figure 10: Table listing top 5 models and selection criteria***
 
 ![](images/WeChatbec88fdc96e9873d31450fafb1ac279f.png){width="598"}
 
-I break the variable region to dummy variable (regw, regnc, regs). I applied log transformation on length, beds and ratio/census after observing positive right skewness in their distributions (Note that I name this variable as rationp to avoid containing dash in my variable name).
+I break the variable region to dummy variable (regw, regnc, regs). I applied log transformation on length, beds and ratio/census after observing positive right skewness in their distributions (Note that I name this variable as rationp to avoid containing dash in my variable name). The original distribution of predictors are displayed in Appendix.
 
 From the result displayed in Figure 10, we can see the 5 predictors model containing regw, logbeds, xray, loglength, logrationp are ranked as the top 1 among many subsets. These five predictors appear to be in each of the subset among the top 5 subsets. The top 1 model has the lowest AIC, BIC, and C(p) measures but $R^2$ in the second model outruns the top 1 model by 0.51.
+
+# Appendix
+
+***Appendix Table 1: Parameters used to build partial residuals in question 2d***
+
+![](images/WeChat5b99c9d67c321caa69061461383ca48e.png){width="462"}
+
+***Appendix Graph 1: Component-plus-residual plot for xray in question 2d***
+
+![](images/WeChat16fddc021e87b8dcbbda7d57f91bc3d3.png){width="495"}
+
+***Appendix Graph 2: Component-plus-residual plot for census in question 2d***
+
+![](images/WeChat5d6cd83e44b15160917f09031bd567eb.png){width="498"}
+
+***Appendix Graph 3: Component-plus-residual plot for age in question 2d***
+
+![](images/WeChat5a7b8bda9387addaaf41e5d6929d3f4b.png){width="522"}
+
+***Appendix Graph 4: Histogram of beds in question 3b***
+
+![](images/WeChat708f6f55de1d3d06b6217b6b1b4d6992.png){width="519"}
+
+***Appendix Graph 5: Histogram of svcs in question 3b***
+
+![](images/WeChatc18644da891eda427efbddebe4c147a2.png){width="524"}
+
+***Appendix Graph 6: Histogram of msch in question 3b***
+
+![](images/WeChatf515169402f90dae86b03badec8de30d.png){width="524"}
+
+***Appendix Graph 7: Histogram of xray in question 3b***
+
+![](images/WeChat2733d42acb928635aa7a9fbe542cb84f.png){width="533"}
+
+***Appendix Graph 8: Histogram of length in question 3b***
+
+![](images/WeChatf5032ccd50d7e59138dc5f6db276ec57.png){width="540"}
+
+***Appendix Graph 9: Histogram of nurse/patient ratio***
+
+![](images/WeChat8393f8d3c6ec276c7db4b6d528905d1f.png){width="546"}

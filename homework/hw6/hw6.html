@@ -115,22 +115,80 @@ window.Quarto = {
 &amp;=\hat{\beta}-\frac{(X'X)^{-1}x_ie_i}{1-h_i}
 \end{align*}\]</span>
 <p><strong>(b) Answer:</strong></p>
-<p><span class="math display">\[\begin{align*}
+<span class="math display">\[\begin{align*}
 y_i-x'_{i}\hat{\beta}_{(-i)}&amp;=y_i-x'_i(\hat{\beta}-\frac{(X'X)^{-1}x_ie_i}{1-h_i})\\
 &amp;=y_i-x'_i\hat{\beta}+\frac{x'_i(X'X)^{-1}x_ie_i}{1-h_i}\\
 &amp;=\frac{(x'_i\hat{\beta}+e_i)(1-h_i)}{1-h_i}-\frac{x'_i\hat{\beta}(1-h_i)}{1-h_i}+\frac{h_ie_i}{1-h_i}\\
 &amp;=\frac{e_i(1-h_i)}{1-h_i}+\frac{h_ie_i}{1-h_i}\\
 &amp;=\frac{e_i(1-h_i+h_i)}{1-h_i}\\
 &amp;=\frac{e_i}{1-h_i}
-\end{align*}\]</span></p>
+\end{align*}\]</span>
 </section>
 <section id="question-2" class="level1">
 <h1>Question 2</h1>
 <p><img src="images/WeChatd1bf81cdec0eb521ce0ff93608b25575.png" class="img-fluid"></p>
+<p><strong>(a) Answer:</strong></p>
+<p><strong><em>Figure 1:</em></strong></p>
+<p><img src="images/WeChatf4e6830e3bf0fd0511061d1dbbaf6050.png" class="img-fluid" width="498"></p>
+<p>By observing Figure 1, we detect ids in red have high influence to the model. The size of the circle corresponds to the quantity of cook’s D. The x axis is the leverage and y axis is the studentized residuals.</p>
+<p>In general, here are the ids with unusual leverage, residual, cook’s D:</p>
+<p>leverage: 112, 104</p>
+<p>residual: 47, 33, 43, 54</p>
+<p>cook’s D: 47, 112</p>
+<p><strong>(b) Answer:</strong></p>
+<p><strong><em>Figure 2: id vs Cook’s D</em></strong></p>
+<p><img src="images/WeChat094c296b0c192fb78c0bc1655dfebcb9.png" class="img-fluid" width="530"></p>
+<p><strong><em>Figure 3: Studentized Residual without current observation vs Leverage</em></strong></p>
+<p><img src="images/WeChatd65505949404394ce8b1d0d386aa3a83.png" class="img-fluid" width="540"></p>
+<p><strong><em>Figure 4: xray vs loglength</em></strong></p>
+<p><img src="images/322741709020829_.pic.jpg" class="img-fluid" width="534"></p>
+<p><strong><em>Figure 5: census vs loglength</em></strong></p>
+<p><img src="images/322751709020857_.pic.jpg" class="img-fluid" width="541"></p>
+<p><strong><em>Figure 6: age vs loglength</em></strong></p>
+<p><img src="images/322761709020878_.pic.jpg" class="img-fluid" width="549"></p>
+<p>By observing Figure 2, we can see hospital with id 47 and id 112 have the highest cook’s id. By observing Figure 3, we can see hospital with id 47 has the highest studentized residual and id 112 have the highest leverage. By observing figure 4, 5 and 6, we can see hospital with id 47 and id 112 seem to be outliers. They have very high loglength compared to observation with same level of independent variables. The usual loglength of these two hospitals make them potentially influential.</p>
+<p><strong>(c) Answer:</strong></p>
+<p><strong><em>Figure 7: Reduced Observation Model measures</em></strong></p>
+<p><img src="images/WeChat9d6a7ad21c6f54197d37ffe636f25854.png" class="img-fluid" width="464"></p>
+<p><strong><em>Figure 8: Full Observation Model measures</em></strong></p>
+<p><img src="images/WeChatd4896783369f5f4effcbf2df0b904d31.png" class="img-fluid" width="461"></p>
+<p>Comparing Figure 7 and Figure 8, the regression parameter estimates in the reduced observation model are smaller than the regression parameter estimates in the full observation model. The p value for predict age has a big shift from 0.0072 (Figure 8) to 0.0385 (Figure 7). The statistical significance of predictor age in the model is waned after reducing the observations. The p values for overall F tests in both models remain the same. The root MSE in reduced observation model is smaller than that in full observation model which indicate the performance of the model improved after removing the outliers.</p>
+<p><strong>(d) Answer:</strong></p>
+<p><strong><em>Figure 9: Final model Result</em></strong></p>
+<p><img src="images/WeChat23eb76f93829ab4b18eefad3072dd8fa.png" class="img-fluid" width="456"></p>
+<p>Figure 9 is the result of the final model. I applied a log transformation on census after observing the component-plus-residual plots for each of the predictor. The numeric and graphic outputs generated in the procedure are displayed in Appendix.</p>
 </section>
 <section id="question-3" class="level1">
 <h1>Question 3</h1>
 <p><img src="images/WeChat6a6d80ee6a3962848a263b5604785992.png" class="img-fluid"></p>
+<p><strong>Answer:</strong></p>
+<p><strong><em>Figure 10: Table listing top 5 models and selection criteria</em></strong></p>
+<p><img src="images/WeChatbec88fdc96e9873d31450fafb1ac279f.png" class="img-fluid" width="598"></p>
+<p>I break the variable region to dummy variable (regw, regnc, regs). I applied log transformation on length, beds and ratio/census after observing positive right skewness in their distributions (Note that I name this variable as rationp to avoid containing dash in my variable name). The original distribution of predictors are displayed in Appendix.</p>
+<p>From the result displayed in Figure 10, we can see the 5 predictors model containing regw, logbeds, xray, loglength, logrationp are ranked as the top 1 among many subsets. These five predictors appear to be in each of the subset among the top 5 subsets. The top 1 model has the lowest AIC, BIC, and C(p) measures but <span class="math inline">\(R^2\)</span> in the second model outruns the top 1 model by 0.51.</p>
+</section>
+<section id="appendix" class="level1">
+<h1>Appendix</h1>
+<p><strong><em>Appendix Table 1: Parameters used to build partial residuals in question 2d</em></strong></p>
+<p><img src="images/WeChat5b99c9d67c321caa69061461383ca48e.png" class="img-fluid" width="462"></p>
+<p><strong><em>Appendix Graph 1: Component-plus-residual plot for xray in question 2d</em></strong></p>
+<p><img src="images/WeChat16fddc021e87b8dcbbda7d57f91bc3d3.png" class="img-fluid" width="495"></p>
+<p><strong><em>Appendix Graph 2: Component-plus-residual plot for census in question 2d</em></strong></p>
+<p><img src="images/WeChat5d6cd83e44b15160917f09031bd567eb.png" class="img-fluid" width="498"></p>
+<p><strong><em>Appendix Graph 3: Component-plus-residual plot for age in question 2d</em></strong></p>
+<p><img src="images/WeChat5a7b8bda9387addaaf41e5d6929d3f4b.png" class="img-fluid" width="522"></p>
+<p><strong><em>Appendix Graph 4: Histogram of beds in question 3b</em></strong></p>
+<p><img src="images/WeChat708f6f55de1d3d06b6217b6b1b4d6992.png" class="img-fluid" width="519"></p>
+<p><strong><em>Appendix Graph 5: Histogram of svcs in question 3b</em></strong></p>
+<p><img src="images/WeChatc18644da891eda427efbddebe4c147a2.png" class="img-fluid" width="524"></p>
+<p><strong><em>Appendix Graph 6: Histogram of msch in question 3b</em></strong></p>
+<p><img src="images/WeChatf515169402f90dae86b03badec8de30d.png" class="img-fluid" width="524"></p>
+<p><strong><em>Appendix Graph 7: Histogram of xray in question 3b</em></strong></p>
+<p><img src="images/WeChat2733d42acb928635aa7a9fbe542cb84f.png" class="img-fluid" width="533"></p>
+<p><strong><em>Appendix Graph 8: Histogram of length in question 3b</em></strong></p>
+<p><img src="images/WeChatf5032ccd50d7e59138dc5f6db276ec57.png" class="img-fluid" width="540"></p>
+<p><strong><em>Appendix Graph 9: Histogram of nurse/patient ratio</em></strong></p>
+<p><img src="images/WeChat8393f8d3c6ec276c7db4b6d528905d1f.png" class="img-fluid" width="546"></p>
 </section>
 
 </main>
