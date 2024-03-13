@@ -19,7 +19,7 @@ Figure: SS in unbalanced data
 
 ![](images/WeChate466827929d8878c2c9dd894a06d59fd.png){width="392"}
 
-In unbalanced data, the SS for A, B, and A\*B in both I SS and III SS are smaller the corresponding values in balanced data.
+In unbalanced data, the SS for A, B, and A\*B in both I SS and III SS are smaller than the corresponding values in balanced data which should be due to the fact that we exclude 4 observations in the unbalanced data. The SSI and SSIII in balanced data are equivalent because factors are independent but the SSI and SSIII in unbalanced data are not equivalent because factors are not independent.
 
 ## 1.2: For the balanced and unbalanced data, provide a 2 x 3 table of cell means. By hand, compute the (unadjusted) factor means and least square (adjusted) means for each data set.
 
@@ -29,7 +29,7 @@ Figure: Balanced Table
 
 ![](images/5061710215800_.pic.jpg)
 
-Adjusted means:
+Unadjusted means:
 
 $A_{1.}$: $\frac{0.204+0.17+0.181+0.167+0.182+0.187+0.202+0.198+0.236}{9}\approx 0.192$
 
@@ -41,7 +41,7 @@ $B_{.2}$: $\frac{0.167+0.283+0.182+0.235+0.187+0.26}{6}\approx 0.219$
 
 $B_{.3}$: $\frac{0.202+0.256+0.198+0.281+0.236+0.258}{6}\approx 0.239$
 
-Unadjusted mean:
+adjusted mean:
 
 $\mu_{11}=\frac{0.204+0.17+0.181}{3}\approx 0.185$
 
@@ -69,7 +69,7 @@ Figure 2: Unbalanced Table
 
 ![](images/5071710216607_.pic.jpg){width="564"}
 
-Adjusted means:
+Unadjusted means:
 
 $A_{1.}$: $\frac{0.204+0.17+0.167+0.182+0.187+0.202}{6}\approx 0.185$
 
@@ -81,7 +81,7 @@ $B_{.2}$: $\frac{0.167+0.283+0.182+0.235+0.187+0.26}{6}= 0.219$
 
 $B_{.3}$: $\frac{0.202+0.281+0.256+0.258}{4}= 0.24925$
 
-Unadjusted mean:
+adjusted mean:
 
 $\mu_{11}=\frac{0.204+0.17}{2}=0.187$
 
@@ -111,11 +111,11 @@ $B_{.3}=\frac{0.202+0.265}{2}=0.2335$
 
 Figure: Code
 
-![](images/WeChate5d3c1765b1750253dbfc83d8567cf65.png){width="527"}
+![](images/WeChat64a4a1c3242f4dbb516ab0592bf1447a.png){width="542"}
 
 Figure: Output
 
-![](images/WeChat9b4a464dfccd1750706363b049e7cfd5.png)
+![](images/WeChat31eaef5fe1cd85365ae76d6fca6e87e7.png){width="521"}
 
 # Question 2
 
@@ -123,17 +123,31 @@ Figure: Output
 
 **(a) Answers:**
 
+Figure: Two way ANOVA with interaction
+
 ![](images/WeChat8f91640e0ab3e74f508670a1ef3c6e73.png){width="540"}
 
 We drop the interaction term because it is not significant. Here is the model after dropping the interaction term.
+
+Figure: Two way anova without interaction
 
 ![](images/WeChatcf55775f7c9339dbc2f276e88106734d.png){width="539"}
 
 **(b) Answers:**
 
-![](images/WeChat2ccd05f8b5bb20eef3c78adfb73d9a3c.png){width="502"}
+Figure: Diagnostics Plots
 
-By observing the three plots on the left, we can conclude that linearity and normality are reasonably met but the constancy of variance is a little questionable since the residuals are more spread when predicted value is larger.
+![](images/WeChat2ccd05f8b5bb20eef3c78adfb73d9a3c.png){width="495"}
+
+Figure: Distribution of B
+
+![](images/WeChat1cf83e49b543d4c36ce5f6a55b0d3e29.png){width="493"}
+
+Figure: Distribution of A
+
+![](images/WeChat594b755e046d96bd5bc29b4bb8cd669b.png){width="490"}
+
+By observing the above plots, we can see the normality is met but the constancy of variance across group is not met.
 
 **(c) Answers:**
 
@@ -141,17 +155,19 @@ By observing the three plots on the left, we can conclude that linearity and nor
 
 **(d) Answers:**
 
-![](images/WeChatc0a37820f9e2cd3db621fb999e75b973.png){width="540"}
+![](images/WeChat7de3fc9b93779173a6830098ea322577.png){width="529"}
 
 $e^{0.187}\approx 1.206$
 
 The median survival time for animal is about 20 percent higher for poison 1 compared to poison 2.
 
+We are 95% confident that the true medians of animals between poison group 1 and poison group 2 lies in the interval (0.0182, 0.3552) on the original scale of survtime.
+
 **(e) Answers:**
 
-![](images/WeChat0931ef5131822d9231747f2ce0c4548b.png){width="534"}
+![](images/WeChatc7d6e8b86d6d367ea2ddecd81f995899.png){width="403"}
 
-The point estimate is roughly -0.394. The 95% confidence interval is (-0.394-0.136, -0.394+0.136)=(-0.53, -0.258). 
+The point estimate is roughly -0.394. The 95% confidence interval is (-0.669, -0.119)
 
 # Question 3
 
@@ -169,8 +185,14 @@ Here are what we are looking for:
 
 $\mu = \bar{Y}_{...}=\frac{13+6+4+17+12+8}{6}=10$
 
-$\alpha_1=\bar{Y}_{1..}-\bar{Y}_{...}=7.67-10=-2.33$ $\alpha_2=\bar{Y}_{2..}-\bar{Y}_{...}=12.33-10=2.33$
+$\alpha_1=\bar{Y}_{1..}-\bar{Y}_{...}=7.67-10=-2.33$
 
-$\beta_1=\bar{Y}_{.1.}-\bar{Y}_{...}=15-10=5$ $\beta_2=\bar{Y}_{.2.}-\bar{Y}_{...}=9-10=-1$ $\beta_3=\bar{Y}_{.3.}-\bar{Y}_{...}=6-10=-4$
+$\alpha_2=\bar{Y}_{2..}-\bar{Y}_{...}=12.33-10=2.33$
+
+$\beta_1=\bar{Y}_{.1.}-\bar{Y}_{...}=15-10=5$
+
+$\beta_2=\bar{Y}_{.2.}-\bar{Y}_{...}=9-10=-1$
+
+$\beta_3=\bar{Y}_{.3.}-\bar{Y}_{...}=6-10=-4$
 
 $(\alpha\beta)_{11}=\bar{Y}_{11}-(\mu+\alpha_1+\beta_1)=13-(10-2.33+5)=0.33$ $(\alpha\beta)_{12}=\bar{Y}_{12}-(\mu+\alpha_1+\beta_2)=6-(10-2.33-1)=-0.67$ $(\alpha\beta)_{13}=\bar{Y}_{13}-(\mu+\alpha_1+\beta_3)=4-(10-2.33-4)=0.33$ $(\alpha\beta)_{21}=\bar{Y}_{21}-(\mu+\alpha_2+\beta_1)=17-(10+2.33+5)=-0.33$ $(\alpha\beta)_{22}=\bar{Y}_{22}-(\mu+\alpha_2+\beta_2)=12-(10+2.33-1)=0.67$ $(\alpha\beta)_{23}=\bar{Y}_{23}-(\mu+\alpha_2+\beta_3)=8-(10+2.33-4)=-0.33$
